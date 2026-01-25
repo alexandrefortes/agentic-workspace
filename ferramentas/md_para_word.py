@@ -12,9 +12,15 @@ Uso:
 import argparse
 import subprocess
 import sys
+import io
 from pathlib import Path
 from datetime import datetime
 import re
+
+# Configurar stdout para UTF-8 no Windows
+if sys.platform == 'win32':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
 # Configurações
 TEMPLATES_DIR = Path("../templates")
