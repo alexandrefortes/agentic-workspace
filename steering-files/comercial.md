@@ -195,10 +195,10 @@ Após gerar proposta, execute:
 
 ```bash
 # Converter para Word (para edição final)
-python ferramentas/md_para_word.py proposta.md --template comercial
+python ferramentas/conversao-word-e-pdf/md_para_word.py proposta.md --template comercial
 
 # Converter para PDF (para envio ao cliente)
-python ferramentas/md_para_pdf.py proposta.md
+python ferramentas/conversao-word-e-pdf/md_para_pdf.py proposta.md
 ```
 
 ### Estrutura de Saída

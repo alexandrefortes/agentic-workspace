@@ -19,7 +19,7 @@ Steering files são arquivos Markdown que contêm instruções e diretrizes para
 - Linguagem formal e técnica
 - Cláusulas obrigatórias (LGPD, foro, rescisão)
 - Numeração de cláusulas
-- Conversão automática para Word + PDF assinável
+- Conversão automática para Word + PDF
 
 **Exemplo de uso:**
 ```
@@ -53,7 +53,7 @@ projetos/rh/politica-home-office/
 - Rigor técnico e objetividade
 - Rastreabilidade de evidências
 - Estrutura padronizada de relatórios
-- Conversão automática para PDF com marca d'água
+- Conversão automática para PDF
 
 **Exemplo de uso:**
 ```
@@ -226,8 +226,8 @@ Exemplo de estrutura de pastas
    - Lê todos os arquivos de entrada
    - Gera contrato.md seguindo diretrizes
    - Executa conversões automáticas:
-     * python ferramentas/md_para_word.py contrato.md --template juridico
-     * python ferramentas/md_para_pdf.py contrato.md --assinavel
+     * python ferramentas/conversao-word-e-pdf/md_para_word.py contrato.md --template juridico
+     * python ferramentas/conversao-word-e-pdf/md_para_pdf.py contrato.md
    - Salva em pasta-saida/
 
 5. Resultado:
@@ -253,7 +253,7 @@ Steering files permitem rastrear:
 
 - [Documentação do Kiro sobre Steering Files](https://docs.kiro.ai/steering-files)
 - [Estrutura do Projeto](../estrutura-projeto.md)
-- [Scripts de Conversão](../ferramentas/README.md)
+- [Scripts de Conversão](../ferramentas/conversao-word-e-pdf/README.md)
 
 ---
 

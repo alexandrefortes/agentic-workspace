@@ -200,9 +200,9 @@ Após gerar qualquer documento em Markdown, você DEVE executar:
 python ferramentas/md_para_word.py documento.md --template juridico
 ```
 
-### 2. Conversão para PDF Assinável
+### 2. Conversão para PDF
 ```bash
-python ferramentas/md_para_pdf.py documento.md --assinavel
+python ferramentas/md_para_pdf.py documento.md
 ```
 
 ### 3. Estrutura de Saída
@@ -210,7 +210,7 @@ python ferramentas/md_para_pdf.py documento.md --assinavel
 pasta-saida/juridico/AAAA-MM-DD/
 ├── [nome-documento].md      # Original em Markdown
 ├── [nome-documento].docx    # Para revisão e edição
-└── [nome-documento].pdf     # Para assinatura digital
+└── [nome-documento].pdf
 ```
 
 ---

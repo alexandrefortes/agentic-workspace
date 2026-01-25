@@ -3,8 +3,8 @@
 > 
 > Basta dizer:  
 > *"Configure o ambiente de conversão de documentos para mim*
-> - Ler os [requisitos em `ferramentas/requirements.txt`](ferramentas/requirements.txt)
-> - Ler a [documentação de troubleshooting em `ferramentas/README.md#-troubleshooting`](ferramentas/README.md#-troubleshooting)
+> - Ler os [requisitos em `ferramentas/conversao-word-e-pdf/requirements.txt`](ferramentas/conversao-word-e-pdf/requirements.txt)
+> - Ler a [documentação de troubleshooting em `ferramentas/conversao-word-e-pdf/README.md#-troubleshooting`](ferramentas/conversao-word-e-pdf/README.md#-troubleshooting)
 > - Checar se Pandoc e MiKTeX estão instalados, se não, instalar
 > - Configurar o PATH do sistema
 > - Testar as conversões e tentar corrigir até conseguir
@@ -172,11 +172,11 @@ Usar o **Amazon Kiro** como assistente de produtividade para profissionais não-
 
 Este projeto inclui scripts Python para converter documentos Markdown em formatos corporativos (Word e PDF) com segurança e qualidade profissional.
 
-> ⚠️ **Importante:** Veja o [guia completo de troubleshooting](ferramentas/README.md#-troubleshooting) se encontrar problemas na instalação ou conversão.
+> ⚠️ **Importante:** Veja o [guia completo de troubleshooting](ferramentas/conversao-word-e-pdf/README.md#-troubleshooting) se encontrar problemas na instalação ou conversão.
 
 ### Scripts Disponíveis
 
-**Localização:** `ferramentas/`
+**Localização:** `ferramentas/conversao-word-e-pdf/`
 
 1. **md_para_word.py** - Converte Markdown para Word (.docx)
 2. **md_para_pdf.py** - Converte Markdown para PDF (.pdf)
@@ -216,7 +216,7 @@ Se os comandos não funcionarem após instalação, adicione ao PATH permanentem
 $env:PATH += ";$env:LOCALAPPDATA\Pandoc;C:\Program Files\MiKTeX\miktex\bin\x64"
 ```
 
-Para configuração permanente, veja o [guia de troubleshooting](ferramentas/README.md#-troubleshooting).
+Para configuração permanente, veja o [guia de troubleshooting](ferramentas/conversao-word-e-pdf/README.md#-troubleshooting).
 
 ---
 
@@ -226,36 +226,26 @@ Para configuração permanente, veja o [guia de troubleshooting](ferramentas/REA
 
 ```bash
 # Converter para Word
-python ferramentas/md_para_word.py documento.md
+python ferramentas/conversao-word-e-pdf/md_para_word.py documento.md
 
 # Converter para PDF
-python ferramentas/md_para_pdf.py documento.md
+python ferramentas/conversao-word-e-pdf/md_para_pdf.py documento.md
 ```
 
 #### Com Templates (Word)
 
 ```bash
-python ferramentas/md_para_word.py documento.md --template juridico
-python ferramentas/md_para_word.py documento.md --template rh
-python ferramentas/md_para_word.py documento.md --template compliance
-python ferramentas/md_para_word.py documento.md --template comercial
-```
-
-#### PDF com Recursos Especiais
-
-```bash
-# PDF assinável
-python ferramentas/md_para_pdf.py documento.md --assinavel
-
-# PDF com marca d'água
-python ferramentas/md_para_pdf.py documento.md --marca-dagua "CONFIDENCIAL"
+python ferramentas/conversao-word-e-pdf/md_para_word.py documento.md --template juridico
+python ferramentas/conversao-word-e-pdf/md_para_word.py documento.md --template rh
+python ferramentas/conversao-word-e-pdf/md_para_word.py documento.md --template compliance
+python ferramentas/conversao-word-e-pdf/md_para_word.py documento.md --template comercial
 ```
 
 #### Especificar Arquivo de Saída
 
 ```bash
-python ferramentas/md_para_word.py documento.md --output saida/documento.docx
-python ferramentas/md_para_pdf.py documento.md --output saida/documento.pdf
+python ferramentas/conversao-word-e-pdf/md_para_word.py documento.md --output saida/documento.docx
+python ferramentas/conversao-word-e-pdf/md_para_pdf.py documento.md --output saida/documento.pdf
 ```
 
 ---
@@ -272,7 +262,7 @@ Os scripts implementam sanitização automática para remover tags perigosas:
 - Ambiente isolado por design
 - Sem processamento de HTML externo
 
-Todas as conversões são registradas em logs de auditoria em `logs/`.
+Todas as conversões são registradas em logs de auditoria em `ferramentas/conversao-word-e-pdf/logs/`.
 
 ---
 
@@ -280,26 +270,26 @@ Todas as conversões são registradas em logs de auditoria em `logs/`.
 
 #### Contrato Jurídico
 ```bash
-python ferramentas/md_para_word.py contrato-cliente-x.md --template juridico
-python ferramentas/md_para_pdf.py contrato-cliente-x.md --assinavel
+python ferramentas/conversao-word-e-pdf/md_para_word.py contrato-cliente-x.md --template juridico
+python ferramentas/conversao-word-e-pdf/md_para_pdf.py contrato-cliente-x.md
 ```
 
 #### Política de RH
 ```bash
-python ferramentas/md_para_word.py politica-home-office.md --template rh
-python ferramentas/md_para_pdf.py politica-home-office.md
+python ferramentas/conversao-word-e-pdf/md_para_word.py politica-home-office.md --template rh
+python ferramentas/conversao-word-e-pdf/md_para_pdf.py politica-home-office.md
 ```
 
 #### Relatório de Compliance
 ```bash
-python ferramentas/md_para_word.py relatorio-auditoria.md --template compliance
-python ferramentas/md_para_pdf.py relatorio-auditoria.md --marca-dagua "CONFIDENCIAL"
+python ferramentas/conversao-word-e-pdf/md_para_word.py relatorio-auditoria.md --template compliance
+python ferramentas/conversao-word-e-pdf/md_para_pdf.py relatorio-auditoria.md
 ```
 
 #### Proposta Comercial
 ```bash
-python ferramentas/md_para_word.py proposta-cliente-y.md --template comercial
-python ferramentas/md_para_pdf.py proposta-cliente-y.md
+python ferramentas/conversao-word-e-pdf/md_para_word.py proposta-cliente-y.md --template comercial
+python ferramentas/conversao-word-e-pdf/md_para_pdf.py proposta-cliente-y.md
 ```
 
 ---
@@ -307,8 +297,8 @@ python ferramentas/md_para_pdf.py proposta-cliente-y.md
 ### Troubleshooting
 
 Se encontrar problemas, consulte:
-- [Guia completo de troubleshooting](ferramentas/README.md#-troubleshooting)
-- [Documentação dos scripts](ferramentas/README.md)
+- [Guia completo de troubleshooting](ferramentas/conversao-word-e-pdf/README.md#-troubleshooting)
+- [Documentação dos scripts](ferramentas/conversao-word-e-pdf/README.md)
 
 ---
 
@@ -418,7 +408,7 @@ Veja a [documentação completa da estrutura](estrutura-projeto.md) para entende
 
 - [Análise de Segurança do Kiro](../../Tecnologias/kiro.md)
 - [Comparativo de IDEs com IA](../../Tecnologias/comparativo-seguranca-ides-ia.md)
-- [Scripts de Conversão](ferramentas/)
+- [Scripts de Conversão](ferramentas/conversao-word-e-pdf/)
 - [Steering Files de Exemplo](steering-files/)
 
 ---

@@ -13,11 +13,14 @@ agentic-ide-for-non-devs/
 ├── README.docx                        # Versão Word (gerada automaticamente)
 ├── README.pdf                         # Versão PDF (gerada automaticamente)
 │
-├── ferramentas/                       # Scripts de conversão
-│   ├── md_para_word.py               # Converte Markdown → Word
-│   ├── md_para_pdf.py                # Converte Markdown → PDF
-│   ├── requirements.txt              # Dependências Python
-│   └── README.md                     # Documentação dos scripts
+├── ferramentas/                       # Ferramentas de automação
+│   ├── README.md                     # Índice de ferramentas disponíveis
+│   └── conversao-word-e-pdf/         # Scripts de conversão
+│       ├── md_para_word.py           # Converte Markdown → Word
+│       ├── md_para_pdf.py            # Converte Markdown → PDF
+│       ├── requirements.txt          # Dependências Python
+│       ├── README.md                 # Documentação dos scripts
+│       └── logs/                     # Logs de auditoria
 │
 ├── steering-files/                    # Steering files por área
 │   ├── juridico.md                   # Diretrizes para Jurídico
@@ -49,18 +52,22 @@ agentic-ide-for-non-devs/
 ## 📂 Descrição dos Diretórios
 
 ### `/ferramentas`
-Scripts Python para conversão automática de documentos.
+Pasta principal para ferramentas de automação do projeto.
 
-**Arquivos:**
+**Subpastas:**
+- `conversao-word-e-pdf/`: Scripts Python para conversão automática de documentos
+
+**Arquivos em `conversao-word-e-pdf/`:**
 - `md_para_word.py`: Converte Markdown para Word com sanitização de segurança
 - `md_para_pdf.py`: Converte Markdown para PDF com qualidade profissional
 - `requirements.txt`: Lista de dependências Python necessárias
 - `README.md`: Documentação completa dos scripts
+- `logs/`: Logs de auditoria de conversões
 
 **Uso típico:**
 ```bash
-python ferramentas/md_para_word.py documento.md --template juridico
-python ferramentas/md_para_pdf.py documento.md --assinavel
+python ferramentas/conversao-word-e-pdf/md_para_word.py documento.md --template juridico
+python ferramentas/conversao-word-e-pdf/md_para_pdf.py documento.md
 ```
 
 ---
@@ -147,8 +154,8 @@ cp contratos-antigos/* projetos/juridico/contrato-cliente-x/entrada/
 ### 3. Conversão Automática
 ```bash
 # Kiro executa automaticamente:
-python ferramentas/md_para_word.py documento.md --template juridico
-python ferramentas/md_para_pdf.py documento.md --assinavel
+python ferramentas/conversao-word-e-pdf/md_para_word.py documento.md --template juridico
+python ferramentas/conversao-word-e-pdf/md_para_pdf.py documento.md
 
 # Salva em:
 projetos/juridico/contrato-cliente-x/saida/
@@ -158,7 +165,7 @@ projetos/juridico/contrato-cliente-x/saida/
 ```
 # Usuário abre documento.docx
 # Faz revisões necessárias
-# Aprova e envia para assinatura (PDF)
+# Aprova e envia
 ```
 
 ---
@@ -189,7 +196,7 @@ projetos/<area>/<tipo-documento>-<identificador>/
 **Exemplos:**
 - `contrato-cliente-x.md` (original)
 - `contrato-cliente-x.docx` (para revisão)
-- `contrato-cliente-x.pdf` (para assinatura)
+- `contrato-cliente-x.pdf`
 
 ---
 
@@ -222,7 +229,7 @@ git tag contrato-cliente-x-v1.0
 Scripts de conversão geram logs automaticamente:
 
 ```
-logs/
+ferramentas/conversao-word-e-pdf/logs/
 ├── 2026-01-24-conversoes.log
 ├── 2026-01-25-conversoes.log
 └── ...

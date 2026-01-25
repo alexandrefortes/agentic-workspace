@@ -147,7 +147,7 @@ inclusion: always
 
 2. **Seja específico com comandos**
    ```markdown
-   ✅ python ferramentas/md_para_word.py arquivo.md
+   ✅ python ferramentas/conversao-word-e-pdf/md_para_word.py arquivo.md
    ❌ Use o script de conversão
    ```
 
@@ -201,7 +201,7 @@ inclusion: always
 
 **Comportamento esperado:**
 1. Agente cria `politica-de-ferias.md`
-2. Agente executa `python ferramentas/md_para_word.py politica-de-ferias.md`
+2. Agente executa `python ferramentas/conversao-word-e-pdf/md_para_word.py politica-de-ferias.md`
 3. Agente informa sucesso e tamanho do arquivo
 
 ### Teste 2: Conversão com Template
@@ -210,7 +210,7 @@ inclusion: always
 
 **Comportamento esperado:**
 1. Agente cria `contrato-prestacao-servicos.md`
-2. Agente executa com template: `python ferramentas/md_para_word.py contrato-prestacao-servicos.md --template juridico`
+2. Agente executa com template: `python ferramentas/conversao-word-e-pdf/md_para_word.py contrato-prestacao-servicos.md --template juridico`
 3. Agente informa sucesso
 
 ### Teste 3: Conversão Múltipla
@@ -230,7 +230,7 @@ inclusion: always
 **Comportamento esperado:**
 1. Agente consulta seção de troubleshooting do steering file
 2. Agente sugere verificar instalação: `pandoc --version`
-3. Agente sugere configurar PATH ou consultar `ferramentas/README.md`
+3. Agente sugere configurar PATH ou consultar ferramentas/conversao-word-e-pdf/README.md
 
 ---
 
@@ -295,7 +295,7 @@ git commit -m "docs: atualizar steering file com novos templates"
 - contrato-prestacao-servicos.docx (18.5 KB)
 
 Comando executado:
-`python ferramentas/md_para_word.py contrato-prestacao-servicos.md --template juridico`"
+`python ferramentas/conversao-word-e-pdf/md_para_word.py contrato-prestacao-servicos.md --template juridico`"
 
 ✅ **Resultado:** Uma interação, sucesso imediato, padrão corporativo aplicado
 
@@ -326,5 +326,5 @@ O steering file `.kiro/steering/ideias.md` implementa todas essas boas práticas
 
 **Referências:**
 - `.kiro/steering/ideias.md` - Steering file implementado
-- `ferramentas/README.md` - Documentação técnica completa
+- ferramentas/conversao-word-e-pdf/README.md - Documentação técnica completa
 - `RELATORIO-CONFIGURACAO.md` - Status da configuração do ambiente

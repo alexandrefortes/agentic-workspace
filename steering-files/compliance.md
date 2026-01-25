@@ -164,8 +164,8 @@ Após gerar relatório, execute:
 # Converter para Word (para revisão)
 python ferramentas/md_para_word.py relatorio.md --template compliance
 
-# Converter para PDF com marca d'água CONFIDENCIAL
-python ferramentas/md_para_pdf.py relatorio.md --marca-dagua "CONFIDENCIAL"
+# Converter para PDF
+python ferramentas/md_para_pdf.py relatorio.md
 ```
 
 ### Estrutura de Saída
@@ -173,7 +173,7 @@ python ferramentas/md_para_pdf.py relatorio.md --marca-dagua "CONFIDENCIAL"
 pasta-saida/compliance/AAAA-MM-DD/
 ├── [nome-relatorio].md      # Original
 ├── [nome-relatorio].docx    # Para revisão
-├── [nome-relatorio].pdf     # Para distribuição (com marca d'água)
+├── [nome-relatorio].pdf     # Para distribuição
 └── anexos/                  # Evidências
     ├── anexo-a.pdf
     ├── anexo-b.xlsx
@@ -192,7 +192,7 @@ pasta-saida/compliance/AAAA-MM-DD/
 - [ ] Normas e regulamentos citados corretamente
 - [ ] Anexos organizados e referenciados
 - [ ] Documento convertido para Word e PDF
-- [ ] PDF tem marca d'água "CONFIDENCIAL"
+- [ ] PDF foi gerado corretamente
 - [ ] Arquivos salvos na pasta correta
 
 ---

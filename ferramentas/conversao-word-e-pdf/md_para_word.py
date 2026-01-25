@@ -24,7 +24,7 @@ if sys.platform == 'win32':
 
 # Configurações
 TEMPLATES_DIR = Path("../templates")
-LOG_DIR = Path("../logs")
+LOG_DIR = Path("./logs")
 LOG_DIR.mkdir(exist_ok=True)
 
 # Templates disponíveis por área

@@ -5,8 +5,7 @@ Converte documentos Markdown para PDF com qualidade profissional.
 
 Uso:
     python md_para_pdf.py documento.md
-    python md_para_pdf.py documento.md --assinavel
-    python md_para_pdf.py documento.md --marca-dagua "CONFIDENCIAL"
+    python md_para_pdf.py documento.md --output saida/documento.pdf
 """
 
 import argparse
@@ -23,7 +22,7 @@ if sys.platform == 'win32':
     sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
 # Configurações
-LOG_DIR = Path("../logs")
+LOG_DIR = Path("./logs")
 LOG_DIR.mkdir(exist_ok=True)
 
 
@@ -80,15 +79,13 @@ def registrar_log(arquivo_entrada, arquivo_saida, status, mensagem=""):
         f.write(linha_log + '\n')
 
 
-def converter_para_pdf(arquivo_md, arquivo_saida=None, assinavel=False, marca_dagua=None):
+def converter_para_pdf(arquivo_md, arquivo_saida=None):
     """
     Converte arquivo Markdown para PDF usando Pandoc + LaTeX.
     
     Args:
         arquivo_md: Caminho do arquivo Markdown
         arquivo_saida: Caminho do arquivo PDF de saída (opcional)
-        assinavel: Se True, gera PDF otimizado para assinatura digital
-        marca_dagua: Texto da marca d'água (opcional)
     
     Returns:
         True se conversão foi bem-sucedida, False caso contrário
@@ -113,32 +110,12 @@ def converter_para_pdf(arquivo_md, arquivo_saida=None, assinavel=False, marca_da
     print(f"📄 Convertendo: {arquivo_md.name}")
     print(f"📁 Saída: {arquivo_saida}")
     
-    if assinavel:
-        print(f"✍️  Modo: PDF assinável")
-    if marca_dagua:
-        print(f"🔒 Marca d'água: {marca_dagua}")
-    
     # Ler e sanitizar conteúdo
     try:
         with open(arquivo_md, 'r', encoding='utf-8') as f:
             conteudo = f.read()
         
         conteudo_limpo = sanitizar_markdown(conteudo)
-        
-        # Adicionar marca d'água se solicitado
-        if marca_dagua:
-            # Adicionar comando LaTeX para marca d'água no cabeçalho
-            header_latex = f"""
----
-header-includes: |
-  \\usepackage{{draftwatermark}}
-  \\SetWatermarkText{{{marca_dagua}}}
-  \\SetWatermarkScale{{0.5}}
-  \\SetWatermarkColor[gray]{{0.9}}
----
-
-"""
-            conteudo_limpo = header_latex + conteudo_limpo
         
         # Criar arquivo temporário com conteúdo sanitizado
         arquivo_temp = arquivo_md.with_suffix('.temp.md')
@@ -162,14 +139,6 @@ header-includes: |
         '-V', 'papersize=a4',
     ]
     
-    # Opções para PDF assinável
-    if assinavel:
-        cmd.extend([
-            '-V', 'colorlinks=true',
-            '-V', 'linkcolor=blue',
-            '-V', 'urlcolor=blue',
-        ])
-    
     # Executar conversão
     try:
         print("⏳ Convertendo... (pode demorar na primeira vez)")
@@ -179,7 +148,7 @@ header-includes: |
             capture_output=True,
             text=True,
             encoding='utf-8',
-            errors='replace',  # Substituir caracteres inválidos
+            errors='replace',
             check=True
         )
         
@@ -189,18 +158,7 @@ header-includes: |
         print(f"✅ Conversão concluída com sucesso!")
         print(f"📊 Tamanho: {arquivo_saida.stat().st_size / 1024:.1f} KB")
         
-        opcoes = []
-        if assinavel:
-            opcoes.append("assinável")
-        if marca_dagua:
-            opcoes.append(f"marca d'água: {marca_dagua}")
-        
-        registrar_log(
-            arquivo_md,
-            arquivo_saida,
-            "SUCESSO",
-            ", ".join(opcoes) if opcoes else "padrão"
-        )
+        registrar_log(arquivo_md, arquivo_saida, "SUCESSO")
         return True
         
     except subprocess.CalledProcessError as e:
@@ -238,8 +196,6 @@ def main():
         epilog="""
 Exemplos:
   python md_para_pdf.py documento.md
-  python md_para_pdf.py documento.md --assinavel
-  python md_para_pdf.py documento.md --marca-dagua "CONFIDENCIAL"
   python md_para_pdf.py documento.md --output saida/documento.pdf
   
 Requisitos:
@@ -258,25 +214,12 @@ Requisitos:
         help='Arquivo PDF de saída (padrão: mesmo nome com .pdf)'
     )
     
-    parser.add_argument(
-        '--assinavel',
-        action='store_true',
-        help='Gera PDF otimizado para assinatura digital'
-    )
-    
-    parser.add_argument(
-        '--marca-dagua',
-        help='Adiciona marca d\'água ao PDF (ex: "CONFIDENCIAL", "RASCUNHO")'
-    )
-    
     args = parser.parse_args()
     
     # Executar conversão
     sucesso = converter_para_pdf(
         args.arquivo,
-        args.output,
-        args.assinavel,
-        args.marca_dagua
+        args.output
     )
     
     sys.exit(0 if sucesso else 1)
