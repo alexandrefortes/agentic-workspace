@@ -1,0 +1,9 @@
+# Dependências Python para scripts de conversão
+# Instale com: pip install -r requirements.txt
+
+# Nenhuma dependência Python adicional necessária!
+# Os scripts usam apenas bibliotecas padrão do Python 3.
+
+# Dependências externas (instalar separadamente):
+# - Pandoc: winget install --id JohnMacFarlane.Pandoc
+# - MiKTeX: winget install MiKTeX.MiKTeX (para PDFs)
