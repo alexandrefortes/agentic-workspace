@@ -1,0 +1,84 @@
+\chapter{INTRODUÇÃO}
+
+%\section{Contextualização dos modelos de linguagem de grande escala}
+
+No contexto da IA generativa, que engloba modelos capazes de gerar novos conteúdos, os Modelos de Linguagem de Grande Escala (LLMs) se destacam por sua capacidade de processamento e geração de texto com alta precisão e adaptabilidade. Segundo a Consultoria Gartner, IA generativa é capaz de aprender a partir de artefatos existentes para gerar novos artefatos realistas em escala, que refletem as características dos dados de treinamento, mas sem repeti-los. Ela pode produzir uma variedade de conteúdos novos, como imagens, vídeos, música, discurso, texto, código de software e design de produtos. Os modelos de fundação de IA, que são treinados em um amplo conjunto de dados não rotulados, são a base dessa tecnologia, permitindo sua aplicação em diferentes tarefas após ajustes finos.\footnote{Para mais informações, consulte o conteúdo abrangente sobre IA generativa disponibilizado pela Gartner em: \url{https://www.gartner.com/en/topics/generative-ai}. Acesso em: 27 ago. 2024.}
+
+Um marco recente nessa evolução foi o lançamento do ChatGPT em 30 de novembro de 2022, que rapidamente se tornou o software de adoção mais rápida da história, atingindo 100 milhões de usuários em apenas dois meses. Esse fenômeno ressalta o impacto transformador dos LLMs, como o GPT-4, na automação de tarefas complexas e na interpretação de dados não estruturados.
+
+\section{Uma projeção do mundo}
+
+Jensen Huang, fundador e CEO da NVIDIA, realizou uma entrevista com Ilya Sutskever, ex-Cientista Chefe e cofundador da OpenAI, durante uma conversa informal no GPU Technology Conference (GTC) em março de 2023.\footnote{HUANG, Jensen. \textit{Entrevista com Ilya Sutskever no GTC 2023}. Blog da NVIDIA, 23 mar. 2023. Disponível em: <https://blogs.nvidia.com/blog/sutskever-openai-gtc/>. Acesso em: 24 ago. 2024.\label{nvidiagdc}} O diálogo ocorreu um dia após o lançamento do GPT-4. Durante a conversa, Sutskever enfatizou que os LLMs, como o GPT-4, vão além de serem apenas modelos estatísticos que preveem a próxima palavra em uma sequência.
+
+\begin{quote}
+    ``It may look on the surface like we are just learning statistical correlations in text, but it turns out that to ‘just learn’ the statistical correlations in text, to compress them really well, what the neural network learns is some representation of the process that produced the text. This text is actually a projection of the world. There is a world out there, and it has a projection on this text''.\footnote{SUTSKEVER, Ilya. \textit{Entrevista com Jensen Huang no GTC 2023}. Vídeo. Minutagens [21:22, 21:55, 28:15, 22:46]. Disponível em: <https://youtu.be/ZZ0atq2yYJw>. Acesso em: 24 ago. 2024.\label{entrevista-sutskever}}
+\end{quote}
+
+[Pode parecer, superficialmente, que estamos apenas aprendendo correlações estatísticas em textos, mas, na verdade, ao 'simplesmente aprender' as correlações estatísticas, para comprimi-las muito bem, o que a rede neural aprende é alguma representação do processo que gerou o texto. Esse texto é, na verdade, uma projeção do mundo. Existe um mundo lá fora, e ele se projeta nesse texto].
+
+A capacidade dos LLMs de aprenderem sobre o mundo é um aspecto central.
+
+\begin{quote}
+    ``What the neural network is learning is more and more aspects of the world, of people, of the human condition, their hopes, dreams, and motivations, their interactions, and the situations that we are in''.\footref{entrevista-sutskever}
+\end{quote}
+
+[O que a rede neural está aprendendo são mais e mais aspectos do mundo, das pessoas, da condição humana, suas esperanças, sonhos e motivações, suas interações e as situações em que nos encontramos].
+
+Esse aprendizado profundo permite que os LLMs sejam aplicados de maneira eficaz em contextos como o deste projeto.
+
+\section{Entendimento de contextos}
+
+Para ilustrar essa capacidade de entendimento dos LLMs, Sutskever faz a seguinte analogia:
+
+\begin{quote}
+    ``Let's consider an example: say you read a detective novel—complicated plot, a storyline, different characters, lots of events, mysteries, clues—it’s unclear. Then, let's say that at the last page of the book, the detective has gathered all the clues, gathered all the people, and says, 'Okay, I'm going to reveal the identity of whoever committed the crime', and that person's name is...predict that word''.\footref{entrevista-sutskever}
+\end{quote}
+
+[Vamos considerar um exemplo: digamos que você esteja lendo um romance de detetive – enredo complicado, uma história, diferentes personagens, muitos eventos, mistérios, pistas – está tudo confuso. Então, digamos que na última página do livro, o detetive reuniu todas as pistas, reuniu todas as pessoas, e diz: 'Ok, vou revelar a identidade de quem cometeu o crime', e o nome dessa pessoa é... preveja essa palavra].
+
+Aqui, ele ilustra que prever corretamente essa palavra não é apenas um exercício de correlação estatística, mas sim um sinal de que o modelo desenvolveu um entendimento contextual.
+
+\subsection{Engenharia de prompt}
+
+O termo ``prompt'' refere-se à instrução ou comando textual que é fornecido ao modelo para gerar uma resposta\footnote{O termo ``prompt'' pode ser traduzido como ``comando'' ou ``solicitação'' em português. No contexto de modelos de linguagem, refere-se à entrada ou instrução fornecida ao modelo para que ele gere uma resposta.}.
+
+
+Ilya Sutskever explica que garantir que o modelo de linguagem responda da forma desejada envolve um processo complexo de aprendizado por reforço e colaboração entre humanos e IA. Ele afirma:
+
+\begin{quote}
+    ``You see, a language model, what it really tries to do is to answer the following question: if I had some random piece of text on the internet which starts with some prefix, some prompt, what will it complete to if you just randomly ended up on some text from the internet? But this is different from, well, I want to have an assistant which will be truthful, that will be helpful, that will follow certain rules and not violate them. That requires additional training. This is where the fine-tuning and the reinforcement learning from human teachers and other forms of AI assistance come in. It’s not just reinforcement learning from human teachers; it’s also reinforcement learning from human and AI collaboration. Our teachers are working together with an AI to teach the AI to behave. But here we are not teaching it new knowledge; this is not what’s happening. We are teaching it, we are communicating with it, we are communicating to it what it is that we want it to be''.\footref{entrevista-sutskever}
+\end{quote}
+
+[Veja, um modelo de linguagem, o que ele realmente tenta fazer é responder à seguinte pergunta: se eu tivesse algum texto aleatório da internet que começa com um prefixo, um prompt, como ele completaria se você simplesmente acabasse em algum texto da internet? Mas isso é diferente de querer um assistente que seja veraz, útil, que siga certas regras e não as viole. Isso requer treinamento adicional. É aqui que entram o ajuste fino e o aprendizado por reforço com instrutores humanos e outras formas de assistência de IA. Não se trata apenas de aprendizado por reforço com instrutores humanos; trata-se também de aprendizado por reforço a partir da colaboração entre humanos e IA. Nossos instrutores estão trabalhando junto com uma IA para ensinar à IA como se comportar. Mas aqui não estamos ensinando novos conhecimentos; isso não é o que está acontecendo. Estamos nos comunicando com ela, estamos comunicando a ela o que queremos que ela seja].
+
+Esse processo de refinamento contínuo é essencial para que o modelo se comporte de maneira alinhada às expectativas e regras definidas pelos desenvolvedores.
+
+O treinamento por reforço descrito por Ilya Sutskever, no qual os modelos de linguagem são ajustados e refinados por meio de interações contínuas com instrutores humanos e IA, está intimamente relacionado com o conceito de engenharia de prompt, utilizado neste trabalho.
+
+Na prática, a engenharia de prompt consiste em fornecer instruções específicas e detalhadas ao modelo, seja por meio do ChatGPT ou da API da OpenAI, para que ele interprete e processe um conjunto de dados ou uma consulta de maneira alinhada às necessidades do usuário. Enquanto o treinamento por reforço molda o comportamento do modelo de forma global, a engenharia de prompt atua como um ajuste fino, aplicando novas informações e orientações sobre como interpretar e responder a um conjunto específico de dados. Ambos os processos aproveitam o fato de que o modelo de linguagem não é apenas uma base de conhecimento compactada, mas sim uma representação do mundo e de seus processos, capaz de incorporar novas instruções e adaptá-las ao seu entendimento pré-existente.
+
+%\subsection{Aplicação}
+
+Com base nessas capacidades, este projeto se propõe a explorar a aplicação prática dos LLMs e técnicas de engenharia de prompt na avaliação do atendimento ao cliente. A automação cognitiva aqui desenvolvida visa complementar o julgamento humano, liberando os profissionais das tarefas manuais de análise de atendimentos, o que lhes permite focar em atividades de maior valor agregado, como criatividade e pensamento estratégico.
+
+\section{Hipóteses}
+LLMs permitem abstrair automações complexas de avaliação de atendimento eliminando a necessidade de agentes investirem tempo de classificação em todos os chamados ou construção e manutenção de formulários e fluxos necessários para realizar a tarefa manual de análise. É possível criar um sistema de avaliação que seja flexível a longo prazo, demandando apenas ajustes em prompt para atendimento de necessidades e melhorias, apenas por profissionais não necessariamente de TI, como lideranças do atendimento ou analistas de qualidade.
+
+\section{Objetivos}
+
+\subsection{Objetivo geral}
+
+Aplicar o modelo de linguagem de grande escala (LLM) GPT-4 na automação da avaliação de atendimento ao cliente, validando sua eficácia por meio de uma prova de conceito em ambiente real.
+
+\subsection{Objetivos específicos}
+
+\begin{itemize}
+    \item Explorar e definir conceitos fundamentais de LLMs e engenharia de prompt.
+    \item Implementar uma prova de conceito utilizando o modelo GPT-4 para análise de dados textuais.
+    \item Avaliar a eficácia e a precisão do LLM comparando seus resultados com análises humanas.
+    \item Identificar vantagens, desafios e oportunidades na automação cognitiva com LLMs.
+\end{itemize}
+
+\input{elementos-textuais/capitulo-1-introducção-efi}
+
+\bigskip

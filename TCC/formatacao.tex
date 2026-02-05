@@ -1,0 +1,245 @@
+% ---
+% Arquivo com a formatação do TCC.
+% Este arquivo não deve ser modificado.
+% ---
+%\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb,amsfonts,textcomp}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{array}
+\usepackage{supertabular}
+\usepackage{lastpage}		  % Usado pela Ficha catalográfica
+\usepackage{indentfirst}	  % Indenta o primeiro parágrafo de cada seção.
+\usepackage{hhline}
+\usepackage{hyperref}
+%\usepackage[pdftex]{graphicx}
+\usepackage{graphicx}
+\graphicspath{ {./figuras/} }
+\usepackage{emoji}
+\usepackage[multiple]{footmisc}
+\usepackage{breakcites}
+\tcbuselibrary{breakable}
+\usepackage{alltt}
+\usepackage{minted}
+\usepackage{placeins}
+\usepackage{pdfpages}
+
+% retira as mensagens de aviso do pacote Glossaries
+\let\printglossary\relax
+\let\theglossary\relax
+\let\endtheglossary\relax
+% coloca Seções em maiúsculas sem negrito no Sumário
+\makeatletter
+\let\oldcontentsline\contentsline
+\def\contentsline#1#2{%
+  \expandafter\ifx\csname l@#1\endcsname\l@section
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi
+  {%
+    \oldcontentsline{#1}{\normalfont\MakeTextUppercase{#2}}%
+  }{%
+    \oldcontentsline{#1}{#2}%
+  }%
+}
+\makeatother
+% ---
+% Pacotes glossaries
+% ---
+\usepackage[subentrycounter,seeautonumberlist,nonumberlist=true]{glossaries}
+% para usar o xindy ao invés do makeindex:
+%\usepackage[xindy={language=portuguese},subentrycounter,seeautonumberlist,nonumberlist=true]{glossaries}
+% ---
+% Citações de referências no formato alfabético e negrito
+\usepackage[alf, abnt-emphasize=bf]{abntex2cite} 
+% Margens definidas em 25 mm para uso como documento em PDF
+% Para imprimir use as seguintes margens:
+% \usepackage[left=30mm, top=30mm, right=20 mm, bottom=20mm] {geometry}
+
+\usepackage[margin=25 mm]{geometry}
+%---
+% O arquivo com o nome dos alunos e dos orientadores é lido aqui.
+% Atualizar diretamente no arquivo
+%---
+\input{elementos-pretextuais/capa}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Corrige a fonte dos capítulos, seções, resumos, etc.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\ABNTEXchapterfont}{\bfseries \rmfamily}  % Capítulos em Bold e Maiúsculas
+\renewcommand{\ABNTEXchapterfontsize}{\normalsize}
+\renewcommand{\ABNTEXsectionfont}{\rmfamily}            %  Seções em  Maiúsculas apenas
+\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsectionfont}{\bfseries}         % Subseções em Bold apenas
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+
+\usepackage{url16023}  % para retirar < e > da URL nas referências.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Redefine a macro para imprimir a capa 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\imprimircapa}{%
+\begin{capa}%
+\center
+\imprimirinstituicao
+\par
+\vspace*{1cm}
+\imprimirautor
+\vfill
+\begin{center}
+\MakeUppercase{\bfseries\imprimirtitulo}
+\end{center}
+\vfill
+\imprimirlocal
+\par
+\imprimirdata
+\vspace*{1cm}
+\end{capa}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Redefine a macro para imprimir a folho de rosto
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\imprimirfolhaderosto}{%
+\begin{capa}%
+\center
+\par
+\vspace*{1cm}
+\MakeUppercase{\imprimirautor}
+\vfill
+\begin{center}
+\MakeUppercase{\bfseries\imprimirtitulo}
+\end{center}
+\vfill
+\hspace*{\fill}\parbox[b]{.5\textwidth}{%
+        \linespread{1}\selectfont
+\imprimirpreambulo
+}
+\vfill
+\flushright
+Orientador: \imprimirorientador\\
+
+%Co-orientador: \imprimircoorientador\\
+\vfill
+\begin{center}
+\large\imprimirlocal
+\par
+\large\imprimirdata
+\vspace*{1cm}
+\end{center}
+\end{capa}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Informações do PDF inseridas automaticamente
+% Atualizar apenas as palavras-chave se necessário
+% Não modificar as cores dos links e referências
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\hypersetup{
+pdftitle={\@title},
+pdfauthor={\@author},
+pdfsubject={\imprimirpreambulo},
+pdfkeywords={Trabalho de conclusão de curso}{Inteligência artificial}{CRM},
+pdfcreator={LaTeX with abnTeX2},
+colorlinks=true,
+linkcolor=black,
+citecolor=black,
+urlcolor=black
+}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Definição das Linguagens de Programação
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ---
+% Pacote para formatação de linguagens de programação
+% ---
+\usepackage{listings}         % Para as linguagens de programação
+
+% ---
+% Definição das cores para a formatação de códigos
+% ---
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{purple}{rgb}{0.8,0,0.3}
+\definecolor{orange}{rgb}{1,0.4,0}
+\definecolor{lightlightgray}{rgb}{.95,.95,.95}
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{lightgray2}{rgb}{.85,.85,.85}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+
+% ---
+% Comando personalizado para inserir listagens de código
+% ---
+\newcommand{\includecode}[4][C]{\mbox{\lstinputlisting[caption=#2, label=#3, escapechar=, style=custom#1]{#4}}}
+
+% ---
+% Configurações gerais de formatação para listagens de código
+% ---
+\lstset{numberbychapter=false, framexleftmargin=5mm, frame=shadowbox, rulesepcolor=\color{gray}}
+
+% ---
+% Configuração de títulos e legendas para listagens de código
+% ---
+\renewcommand{\lstlistingname}{Código}                  % Nome para os códigos no texto
+\renewcommand{\lstlistlistingname}{Lista de \lstlistingname s}
+\makeatletter                                          % Configura a linha da lista de códigos
+\renewcommand\l@lstlisting[2]{{\normalfont\@dottedtocline{1}{1.5em}{2em}{Código~#1}{#2}}}
+\makeatother
+
+% ---
+% Leitura de configurações específicas para formatação de linguagens de programação
+% ---
+\input{codigos/linguagens}
+
+% Caixas
+
+\usepackage{setspace} % Controle de espaçamento entre linhas
+\tcbset{
+    colframe=darkgray,     % Cor da borda, um cinza escuro
+    fonttitle=\bfseries,   % Título em negrito
+    boxrule=0.5mm,         % Espessura da borda
+    left=5mm,              % Margem interna à esquerda
+    right=5mm,             % Margem interna à direita
+    boxsep=5mm,            % Espaçamento entre o conteúdo e a borda
+    breakable,             % Permite quebra de página
+}
+%-- Tabelas
+\usepackage{booktabs} % Para criar tabelas com melhor aparência
+\usepackage{caption} % Para configurar a legenda da tabela
+% Configurações gerais de legendas conforme normas ABNT
+\captionsetup{
+    labelfont=bf,             % Deixa o rótulo (e.g., Tabela, Figura) em negrito
+    textfont=normalfont,      % Texto normal para o título da legenda
+    singlelinecheck=false,    % Permite que legendas de uma linha não sejam centralizadas
+    labelsep=space,           % Espaço entre o rótulo e o título da legenda
+    skip=6pt,
+    justification=raggedright % Alinha o texto da legenda à esquerda
+}
+
+% Configurações para espaçamento das legendas
+\setlength{\abovecaptionskip}{12pt} % Espaço acima da legenda
+
+
+% Definindo o espaçamento entre as linhas das tabelas (padding vertical)
+\renewcommand{\arraystretch}{1.8} % Aumenta o espaçamento entre as linhas das tabelas
+
+% Ajustando o padding horizontal nas células
+\setlength{\tabcolsep}{10pt} % Valor padrão é 6pt, ajuste conforme necessário
+
+% Definindo formatação padrão para as colunas das tabelas
+\newcolumntype{L}{>{\raggedright\arraybackslash}p{4cm}} % Alinhamento à esquerda com padding, largura 4cm
+\newcolumntype{M}{>{\raggedright\arraybackslash}p{11cm}} % Alinhamento à esquerda com padding, largura 11cm
+
+% Configuração do pacote para legendas
+\usepackage{caption}
+\captionsetup[table]{labelfont=bf, font=small, labelsep=space, justification=centering, skip=0.5\baselineskip}
+
+% Outras configurações gerais
+\usepackage{geometry}
+\geometry{left=3cm,right=2cm,top=3cm,bottom=2cm}
+%---
+% FIM
+%---

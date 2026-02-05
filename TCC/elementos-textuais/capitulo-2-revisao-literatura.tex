@@ -1,0 +1,177 @@
+\chapter{Revisão da literatura}
+
+Este capítulo examina os conceitos essenciais dos Modelos de Linguagem de Grande Escala (LLMs), sua evolução em relação às técnicas tradicionais de Processamento de Linguagem Natural (PLN), bem como suas vantagens, limitações e perspectivas futuras.
+
+\section{Inteligência humana versus inteligência artificial}
+
+A aplicação de redes neurais profundas, como no GPT-4, baseia-se na capacidade de imitar aspectos do funcionamento cognitivo humano, permitindo o reconhecimento de padrões complexos a partir de grandes volumes de dados. François Chollet \cite{preprint:CHOLLET} argumenta que, para avançar em direção a sistemas artificiais mais inteligentes, é necessário estabelecer uma definição clara e mensurável de inteligência, que permita comparações entre máquinas e humanos. Nesse contexto, Legg e Hutter \cite{report:LEGG_HUTTER} definem inteligência como a capacidade de um agente alcançar objetivos em uma ampla gama de ambientes. Assim, a medição da inteligência deve focar na capacidade de generalização e adaptação, não apenas em tarefas específicas.
+
+A capacidade do GPT-4 de operar em múltiplas modalidades, como texto e imagem, exemplifica essa habilidade de generalização, permitindo que ele lide com praticamente qualquer campo de conhecimento humano disponível na internet. Essa característica não só amplia o alcance das tarefas que o modelo pode realizar, mas também reflete uma forma de inteligência adaptativa, capaz de incorporar e integrar informações de diversas fontes e formatos, alinhando-se à visão de Legg e Hutter sobre a generalização da inteligência.
+
+\section{Aspectos cognitivos e arquiteturais do gpt-4 na generalização da inteligência artificial}
+
+Os LLMs, como o GPT-4, operam por meio de uma arquitetura baseada em transformers, o que lhes permite analisar e compreender a linguagem natural de maneira contextual. Durante o treinamento, os LLMs ajustam seus parâmetros internos para prever a próxima palavra em uma sequência, minimizando a diferença entre a previsão e os dados reais \cite{report:CHANG}.
+
+Uma das principais características que tornam o GPT-4 um modelo altamente inteligente é sua capacidade de integrar conhecimentos de múltiplas disciplinas, característica essa conhecida como polidisciplinaridade. Ao contrário de modelos anteriores, que operam em contextos mais limitados, o GPT-4 consegue aplicar conhecimentos de diferentes áreas para descobrir ``desconhecidos desconhecidos'', ou seja, questões e soluções que não haviam sido previamente formuladas ou compreendidas pelo ser humano. Essa habilidade é fundamental para a geração de novas perspectivas e para o avanço do conhecimento em diversas áreas \cite{report:CHANG}.
+
+Outra característica importante do GPT-4 é sua capacidade polimodal, que permite o treinamento e a aprendizagem a partir de múltiplas modalidades de dados, como texto e imagens. Esse aprendizado multimodal melhora a versatilidade e a inteligência geral do modelo, possibilitando que ele desempenhe melhor em tarefas que envolvem compreensão e raciocínio em diferentes contextos. Por exemplo, ao integrar imagens no processo de treinamento, o GPT-4 é capaz de associar representações visuais a conceitos linguísticos, o que pode aumentar a precisão em tarefas complexas, como a interpretação de questões matemáticas ou a tradução de significados entre diferentes idiomas \cite{report:CHANG}.
+
+Além disso, o GPT-4 incorpora mecanismos de alinhamento de valores pós-treinamento, conhecidos como Reinforcement Learning with Human Feedback (RLHF), para garantir que suas respostas e comportamentos estejam alinhados com valores humanos. Esse alinhamento é essencial para mitigar comportamentos indesejáveis, como a geração de linguagem tóxica ou a disseminação de informações incorretas. No entanto, Chang \cite{report:CHANG} alerta que esse processo pode, paradoxalmente, limitar a inteligência do modelo. A modificação dos parâmetros ótimos para se alinhar a valores específicos pode comprometer seu desempenho em outras tarefas. Ele cita como exemplo o caso do AlphaGo Zero, que superou seu predecessor, AlphaGo, ao ser treinado sem interferência humana, demonstrando que, em certos contextos, minimizar a influência do conhecimento humano pode aumentar o potencial de aprendizado dos modelos de IA.
+
+\section{Vantagens dos LLMs}
+
+Os LLMs oferecem diversas vantagens em relação aos modelos de PLN tradicionais:
+
+\subsection{Escalabilidade}
+
+Os LLMs são capazes de processar e gerar texto a partir de vastas quantidades de dados, o que lhes permite realizar tarefas complexas de PLN com maior precisão. O GPT-4, por exemplo, demonstrou capacidades excepcionais em benchmarks como o Massive Multitask Language Understanding (MMLU)\footnote{O Massive Multitask Language Understanding (MMLU) é um benchmark que abrange 57 disciplinas, incluindo áreas como STEM, humanidades, ciências sociais e mais. Ele testa o conhecimento adquirido durante o pré-treinamento, avaliando os modelos exclusivamente em configurações zero-shot e few-shot. Isso torna o benchmark mais desafiador e mais próximo de como avaliamos humanos. Para mais informações, consulte: \url{https://paperswithcode.com/dataset/mmlu}. Acesso em: 27 ago. 2024.}, superando modelos anteriores em diversas métricas \cite{report:CHANG}.
+
+\subsection{Adaptabilidade}
+
+Uma das características mais marcantes dos LLMs é sua capacidade de se adaptar a diferentes contextos e domínios sem necessidade de treinamento adicional. Isso é particularmente útil em aplicações onde a flexibilidade e a abrangência de conhecimentos são essenciais \cite{art:BROWN}.
+
+\subsection{Geração de conteúdo}
+
+Os LLMs, como o GPT-4, têm a habilidade de gerar texto coerente e relevante, abrindo novas possibilidades em áreas como criação de conteúdo automatizado e assistência virtual. Esses modelos conseguem sintetizar informações de múltiplas fontes, criando respostas que são contextualmente apropriadas e informadas por vastos corpora de dados \cite{report:CHANG,art:BROWN}.
+
+\subsection{Multimodalidade}
+
+A integração de diferentes tipos de dados, como imagens e texto, em um único modelo torna os LLMs mais versáteis e aplicáveis a uma ampla gama de tarefas. O GPT-4, por exemplo, é um modelo polimodal, capaz de processar e integrar informações visuais e textuais, o que melhora seu desempenho em tarefas complexas como o Graduate Record Examinations (GRE) \cite{report:CHANG}.
+
+\section{Limitações e desafios dos LLMs}
+
+Apesar de suas muitas vantagens, os LLMs enfrentam várias limitações e desafios, que podem ser técnicos, éticos e sociais:
+
+\subsection{Viés e preconceito}
+
+LLMs tendem a perpetuar vieses presentes nos dados de treinamento, o que pode resultar em respostas problemáticas ou discriminatórias. Isso é um desafio significativo, dado que os modelos são treinados em vastos conjuntos de dados que podem incluir informações tendenciosas \cite{art:BROWN}.
+
+\subsection{Custo computacional}
+
+O treinamento e operação de LLMs exigem recursos computacionais significativos. Modelos como o GPT-4, que utilizam bilhões de parâmetros, requerem infraestrutura robusta para serem executados de maneira eficiente \cite{report:CHANG,art:BROWN}.
+
+\subsection{Interpretação e explicabilidade}
+
+Entender como os LLMs chegam a determinadas conclusões ou previsões é um desafio, o que levanta questões sobre a confiança e a responsabilidade no uso dessas tecnologias. A falta de transparência nos processos de tomada de decisão dos modelos pode dificultar a identificação de erros ou vieses \cite{report:CHANG}.
+
+\subsection{Segurança e uso indevido}
+
+O potencial para uso indevido de LLMs é considerável, incluindo a geração de desinformação. Isso exige uma reflexão cuidadosa sobre a regulamentação e o controle dessas tecnologias \cite{art:BROWN}.
+
+\section{Perspectivas futuras e tendências}
+
+O desenvolvimento contínuo dos LLMs aponta para diversas direções futuras promissoras:
+
+\subsection{Avanços na arquitetura}
+
+Melhores arquiteturas de LLMs podem superar limitações atuais, como a introdução de novos tipos de modelos ou técnicas de treinamento mais eficientes. Por exemplo, a adoção do modelo de \textit{mixture of experts} no GPT-4 sugere que a escalabilidade horizontal pode ser uma estratégia eficaz para melhorar o desempenho sem aumentar excessivamente o número de parâmetros \cite{report:CHANG}.
+
+\subsection{Modelos mais sustentáveis}
+
+Há um esforço crescente para tornar os LLMs mais eficientes em termos de consumo de energia e recursos computacionais, incluindo o desenvolvimento de modelos menores, mas igualmente eficazes \cite{art:BROWN}.
+
+\subsection{Regulamentação e governança}
+
+Com o uso crescente dos LLMs em áreas sensíveis, há uma necessidade urgente de regulamentações adequadas para garantir que essas tecnologias sejam utilizadas de forma ética e segura \cite{report:CHANG, rossetti2023inteligencia}.
+
+\subsection{Adição de uma camada de raciocínio nos LLMs}
+
+Chang et al. \cite{report:CHANG}, em seu artigo ``\textit{Examining GPT-4: Capabilities, Implications and Future Directions}'', propõem a adição de uma camada de raciocínio aos modelos de linguagem de grande escala, como o GPT-4. Essa camada seria responsável por aprimorar a capacidade desses modelos de realizar raciocínios mais estruturados e conscientes, atuando em conjunto com as fases gerativas e avaliativas. A ideia é que essa camada permita aos modelos não apenas gerar conteúdo com base em padrões aprendidos, mas também aplicar uma lógica mais deliberada e rigorosa em suas respostas. Esse avanço busca aproximar os LLMs de um raciocínio crítico e analítico, similar ao processo de pensamento humano, potencializando sua eficácia em tarefas que requerem uma compreensão e análise mais profundas \cite{report:CHANG}.
+
+Além disso, Qiao et al. \cite{report:QIAO2023} 
+%no artigo Reasoning with Language Model Prompting: A Survey", 
+discutem como técnicas de prompting e engenharia de prompt podem ser usadas para melhorar ainda mais as capacidades de raciocínio dos LLMs. Eles sugerem que a integração de estratégias como Chain-of-Thought (CoT) e a utilização de motores externos de raciocínio podem aumentar a precisão e a robustez dos modelos ao enfrentar problemas complexos. Essas abordagens não apenas complementam a camada de raciocínio, mas também facilitam a decomposição de tarefas complexas em etapas mais manejáveis, permitindo que os modelos avancem em direção a uma inteligência mais geral e adaptativa \cite{report:QIAO2023}.
+
+\section{Engenharia de prompt}
+
+A engenharia de prompt consiste na formulação e refinamento de comandos para modelos de linguagem, como o GPT-4, visando a obtenção de respostas mais precisas e relevantes. De acordo com a documentação da OpenAI \cite{openai2024prompt}, diversas estratégias e táticas podem ser aplicadas para aprimorar a qualidade das respostas geradas. Esta sessão aborda algumas dessas estratégias, complementadas por exemplos que demonstram sua aplicação prática.
+
+Este conteúdo, extraído da documentação da OpenAI, apresenta apenas um resumo das estratégias e táticas de engenharia de prompt. Para uma compreensão mais completa e detalhada dessas práticas, incluindo exemplos adicionais e diretrizes, é recomendada a consulta direta à documentação oficial da OpenAI\footnote{\url{https://platform.openai.com/docs/guides/prompt-engineering/strategy-test-changes-systematically}}.
+
+\subsection{Especificação de instruções claras}
+
+Uma estratégia essencial para melhorar os resultados é fornecer instruções claras e detalhadas. Isso inclui a especificação do nível de complexidade desejado para a resposta, o formato adequado, e outros detalhes pertinentes. Quanto mais claras forem as instruções, menor será a probabilidade de o modelo gerar respostas inadequadas.
+
+\begin{table}[h]
+\centering
+\caption{Exemplos de Instruções Melhores e Piores para Modelos de Linguagem}
+\renewcommand{\arraystretch}{1.5} % Aplica o espaçamento 1,5 apenas na tabela
+\begin{tabularx}{\textwidth}{|X|X|}
+\hline
+\textbf{Pior} & \textbf{Melhor} \\
+\hline
+Como somo números no Excel? & Como somar uma linha de valores em Reais no Excel? Quero fazer isso automaticamente para uma planilha inteira, com todos os totais aparecendo à direita em uma coluna chamada ``Total''. \\
+\hline
+Quem é o presidente? & Quem foi o presidente do México em 2021 e com que frequência ocorrem as eleições? \\
+\hline
+Escreva um código para calcular a sequência de Fibonacci. & Escreva uma função em TypeScript para calcular eficientemente a sequência de Fibonacci. Comente o código detalhadamente para explicar o que cada parte faz e por que foi escrita dessa forma. \\
+\hline
+Resuma as notas da reunião. & Resuma as notas da reunião em um único parágrafo. Em seguida, escreva uma lista em markdown dos palestrantes e de cada um de seus pontos principais. Finalmente, liste as próximas etapas ou itens de ação sugeridos pelos palestrantes, se houver. \\
+\hline
+\end{tabularx}
+\end{table}
+
+\FloatBarrier
+
+\subsection{Utilização de texto de referência}
+
+Para minimizar a geração de respostas imprecisas, é recomendável fornecer ao modelo um texto de referência confiável. O modelo pode ser instruído a utilizar exclusivamente esse texto ao compor suas respostas, o que reduz a probabilidade de erros.
+
+\begin{tcolorbox}[title=Exemplo de Uso de Texto de Referência, label={box:reference_text}]
+SYSTEM: Use os artigos fornecidos delimitados por aspas triplas para responder às perguntas. Se a resposta não puder ser encontrada nos artigos, escreva ``Não consegui encontrar uma resposta.'' \\
+USER: ``````<inserir artigos aqui>'''''' \\
+Pergunta: <inserir pergunta aqui>
+\end{tcolorbox}
+
+\subsection{Divisão de tarefas complexas em subtarefas simples}
+
+Tarefas complexas tendem a apresentar uma maior taxa de erro. Para reduzir essa taxa, é aconselhável dividir tarefas complexas em uma série de subtarefas mais simples, onde as saídas das tarefas iniciais servem de entrada para as seguintes.
+
+\begin{tcolorbox}[title=Exemplo de Subdivisão de Tarefas, label={box:subtasks}]
+SYSTEM: Você receberá consultas de atendimento ao cliente que requerem solução de problemas em um contexto de suporte técnico. Ajude o usuário com as seguintes etapas:
+
+1. Peça ao usuário para verificar se todos os cabos de/para o roteador estão conectados.
+2. Se todos os cabos estiverem conectados e o problema persistir, pergunte qual modelo de roteador ele está usando.
+3. Informe ao usuário como reiniciar o dispositivo com base no modelo fornecido.
+
+USER: Preciso fazer minha internet voltar a funcionar.
+\end{tcolorbox}
+
+\subsection{Tempo para processamento da resposta}
+
+Instruir o modelo a refletir sobre uma solução antes de responder pode melhorar a precisão da resposta, especialmente em tarefas que exigem raciocínio lógico ou cálculos matemáticos.
+
+\begin{tcolorbox}[title=Exemplo de Tempo para Processamento, label={box:think_time}]
+SYSTEM: Primeiro, resolva o problema por conta própria. Depois, compare sua solução com a do estudante e avalie se a solução do estudante está correta ou não. Não decida se a solução do estudante está correta até ter resolvido o problema você mesmo. \\
+USER: Declaração do problema: Estou construindo uma instalação de energia solar e preciso de ajuda para calcular os custos financeiros...
+\end{tcolorbox}
+
+%\newpage
+
+\subsection{Limitações da adição excessiva de detalhes em prompts}
+
+Andrew Best, em seu artigo \textit{You are Using ChatGPT Wrong! — \#1 Mistake 99\% of Users Make}\footnote{BEST, Andrew. \textit{You are Using ChatGPT Wrong! — \#1 Mistake 99\% of Users Make}. Disponível em: <https://ai.plainenglish.io/you-are-using-chatgpt-wrong-1-mistake-99-of-users-make-fe0263d52481>. Acesso em: 28 ago. 2024.\label{best-note}}, argumenta que existe uma tendência comum de se recomendar a adição de muitos detalhes em um único prompt, o que pode prejudicar a qualidade das respostas.
+
+Best argumenta que, ao contrário do que muitos acreditam, fornecer muitos detalhes em um prompt pode resultar em saídas menos precisas, especialmente quando o modelo é sobrecarregado com informações específicas e complexas. Ele exemplifica essa situação com a criação de imagens, onde um prompt simples produziu resultados mais satisfatórios do que um prompt muito detalhado (ver Figura \ref{fig:prompt-simples} e Figura \ref{fig:prompt-complexo}). Esse fenômeno também é observável em tarefas textuais, como a escrita de código ou a geração de artigos.
+
+No desenvolvimento deste trabalho, a complexidade do prompt foi escalando conforme necessário, como pode ser observado ao comparar o \textit{Prompt da prova de conceito} (\ref{lst:prompt-poc}) com o \textit{Prompt final}, mais complexo (\ref{box:prompt-final}).
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{figuras/mulher simples.png}
+\caption{Resultado do prompt simples. Crédito: Andrew Best\footref{best-note}.}
+\label{fig:prompt-simples}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{figuras/mulher complexo.png}
+\caption{Resultado do prompt mais detalhado. Crédito: Andrew Best\footref{best-note}.}
+\label{fig:prompt-complexo}
+\end{figure}
+
+\subsection{Desafios Éticos e de Propriedade Intelectual na Geração de Conteúdos por IA}
+
+No tópico anterior, as imagens apresentadas (Figuras \ref{fig:prompt-simples} e \ref{fig:prompt-complexo}) foram creditadas a Andrew Best\footnote{\label{best-note}BEST, Andrew. You are Using ChatGPT Wrong! — \#1 Mistake 99\% of Users Make. Disponível em: \url{https://ai.plainenglish.io/you-are-using-chatgpt-wrong-1-mistake-99-of-users}}. Contudo, essa atribuição levanta questões sobre a propriedade intelectual na criação de conteúdo por IA. Embora o prompt seja de Best, as imagens foram geradas por um modelo de IA treinado com vasto conteúdo disponível na internet, cujos autores originais muitas vezes não são reconhecidos.
+
+As discussões sobre esses temas têm se intensificado, à medida que a criação de conteúdo por IA se torna mais comum. Questões sobre a autoria, os direitos dos criadores de conteúdo original usado no treinamento dos modelos e a transparência na geração de conteúdo estão no centro desses debates. Regulamentações sobre propriedade intelectual em face das inteligências artificiais generativas começam a se tornar necessárias para abordar esses desafios e garantir que todas as partes envolvidas sejam adequadamente reconhecidas e protegidas.

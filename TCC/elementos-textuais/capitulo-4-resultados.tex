@@ -1,0 +1,254 @@
+\chapter{Resultados}
+
+\section{Anonimização dos conteúdos}
+
+Para assegurar a privacidade de todos os envolvidos e proteger dados sensíveis, foi realizada a anonimização dos conteúdos neste TCC conforme as seguintes diretrizes:
+
+\begin{enumerate}
+    \item Os nomes dos clientes foram alterados para ``\texttt{[CLIENTE]}'' e os nomes dos especialistas de suporte da Efí Bank foram substituídos por ``\texttt{[ESPECIALISTA DE SUPORTE]}''.
+    
+    \item Qualquer link presente nas conversas foi anonimamente representado como ``\texttt{[LINK]}''. 
+    
+    \item Números específicos de tickets foram substituídos pela expressão ``\texttt{Ticket Nº[TICKET]}''.
+    
+    \item Além disso, quaisquer outros dados sensíveis encontrados, como endereços de e-mail, números de telefone, números de cartões de crédito, endereços físicos, entre outros, foram substituídos pelo termo correspondente, utilizando o padrão ``\texttt{[TIPO\_DE\_DADO]}'' para designar o tipo de informação original. Por exemplo, números de telefone foram substituídos por ``\texttt{[TELEFONE]}''.
+\end{enumerate}
+
+\section{Anonimização dos gráficos de resultados}
+
+Para garantir a confidencialidade dos dados estratégicos da Efí Bank, adotamos medidas de anonimização nos gráficos de resultados, conforme descrito a seguir:
+
+\begin{enumerate}
+    \item Os nomes das \textit{Tags} e dos produtos mencionados nos gráficos foram anonimizados. 
+    
+    \item Além disso, os valores apresentados nos gráficos foram normalizados.
+\end{enumerate}
+
+Essas medidas foram implementadas para manter a integridade das análises apresentadas, ao mesmo tempo em que protegem os interesses estratégicos da Efí Bank.
+
+
+\section{Avaliações}
+
+Entre os dias 15/04/2024 e 27/08/2024 foram realizadas 113.673 avaliações. Com base nos resultados, foi possível verificar que o modelo \texttt{gpt-4o} apresentou uma performance consistente em capturar nuances nas interações, identificar corretamente os problemas relatados pelos clientes e sugerir melhorias para o atendimento e produtos. Contudo, a sensibilidade ao prompt e o fenômeno de alucinações ainda se mostraram como desafios significativos, necessitando ajustes constantes no prompt para melhorar a coerência e a precisão das respostas.
+
+\subsection{Amostra selecionada}
+
+\begin{lstlisting}[language=JSON, caption={Amostra selecionada}, style=customJSON]
+{
+  "messages": [
+    {
+      "content": {
+        "messagesIntranet": [
+          {
+            "Message": "Olá, [CLIENTE]! Queremos oferecer a você um serviço seguro e transparente, por isso precisamos de sua colaboração. A Efí enquanto Instituição de Pagamento, possui processos internos que visam garantir a qualidade e a segurança das transações, bem como o cumprimento dos nossos Termos e Condições de Uso (contrato) e Exigências Regulatórias. Para isso, contamos com um sistema de monitoramento que nos alerta quando é feita alguma ação ou interação com sua conta que necessite de análise. Em uma dessas verificações, tivemos apontamentos que nos levaram a suspender preventivamente as operações na sua conta digital. Para darmos continuidade ao processo de análise, solicitamos que nos envie algumas informações adicionais: - Descreva com suas palavras a finalidade da utilização da conta digital. - Encaminhe documentos e informações que comprovem sua atividade comercial e/ou profissional. Para verificar quais documentos são aceitos, clique [LINK]. - Caso não tenha nenhum dos documentos indicados no link acima, nos informe como é firmada a relação de prestação de serviços entre as partes (você e seu cliente). Para maiores informações sobre os motivos que levaram a suspensão das operações na sua conta, acesse: [LINK] Importante! A tratativa desta análise será feita exclusivamente por meio deste ticket. O prazo para resposta é de até 05 (cinco) dias úteis a cada interação. Caso não tenhamos retorno em até 30 dias corridos, sua conta digital poderá ser encerrada em definitivo. Conte com a gente! Efí S.A.",
+            "EntryDate": "2024-06-07T09:40:03.000Z",
+            "ActorName": "System"
+          }, {
+            "Message": "Olá, Agradeço a atenção. Muito obrigado pela cordialidade. Segue acima o contrato de locação em meu nome, onde consta a matriz do meu empreendimento. Para agregar a este ticket, passo a seguinte informação sobre a funcionalidade do meu empreendimento: Funciona 24 horas, sendo que o que mais se destaca é o delivery, tanto de comida quanto de bebidas alcoólicas em geral. Recebemos dos nossos clientes entre 68% e 80% do total da operação via Pix, realizado diretamente pelo WhatsApp com a plataforma integrada. Não podemos parar a operação, ainda mais considerando que esse valor não representa 5% de um dia, pois temos 3 pontos de venda. Toda vez que ocorre um problema com a conta na qual a chave Pix está cadastrada no aplicativo de pedidos via WhatsApp, tenho um grande transtorno, pois preciso entrar em contato com a empresa do sistema ou avisar cliente por cliente, fornecendo outra chave Pix. Por favor, peço que retorne o acesso à minha conta o quanto antes. Escolhi sua empresa porque ouvi falar muito bem dela. Atenciosamente, [CLIENTE]",
+            "EntryDate": "2024-06-09T22:18:38.000Z",
+            "ActorName": "EndUser"
+          }, {
+            "Message": "Eu utilizo a conta digital para o recebimento e pagamentos por meio de Pix. Presto serviço de marketing, aumentando o número de clientes de outras empresas digitais. Trabalho com indicação de clientes para Casas de aposta, Hotmart, Monetizze, entre outros. Recebo comissão pelo fato de o cliente comprar ou assinar. Quando o cliente faz assinatura de um produto, geralmente cursos, recebo comissão recorrente; e, quando o produto é de venda única, recebo a comissão única. Eu capto clientes e ganho comissão.",
+            "EntryDate": "2024-06-28T01:48:17.000Z",
+            "ActorName": "EndUser"
+          }, {
+            "Message": "Possuo um instagram [LINK]. a relação contratual entre minha empresa e os clientes é estabelecida por meio dos termos e condições das plataformas Monetizze, Hotmart, amazon, mercadolivre e etc. A comprovação da prestação de serviços ou entrega de produtos pode ser feita através de registros de vendas, emissão de notas fiscais, relatórios detalhados e suporte ao cliente oferecido pelas plataformas.",
+            "EntryDate": "2024-07-18T18:54:18.000Z",
+            "ActorName": "EndUser"
+          }, {
+            "Message": "Parece que você não entendeu. Eu não vendo produto, eu ganho comissão na divulgação apenas.",
+            "EntryDate": "2024-07-23T19:58:58.000Z",
+            "ActorName": "EndUser"
+          }
+        ],
+        "liveChatTranscriptSummaries": [],
+        "emailMessages": [
+          {
+            "Message": "Olá, O meu banco não consta nas opções da página [LINK], eu fui orientado pelo suporte a enviar por aqui os dados. segue anexo minha conversa com o suporte.",
+            "EntryDate": "2024-08-05T18:14:19.000Z",
+            "ActorName": "EndUser"
+          }, {
+            "Message": "Olá, [CLIENTE]. Após o encerramento da conta, eventuais recursos disponíveis como saldo, poderão ser transferidos somente via TED, para contas bancárias de mesma titularidade. Essa ação deverá ser executada via [LINK]. Conte com a gente! Atenciosamente, Departamento Antifraude - Efí S",
+            "EntryDate": "2024-08-05T17:56:29.000Z",
+            "ActorName": "System"
+          }, {
+            "Message": "Olá, segue os dados do a transferência do saldo total abaixo: Banco: CloudWalk Instituição de Pagamento Agência (sem dígitos): [TELEFONE] Conta corrente com dígito: [TELEFONE]",
+            "EntryDate": "2024-08-02T23:15:38.000Z",
+            "ActorName": "EndUser"
+          }, {
+            "Message": "Olá, [CLIENTE]. Após análise, decidimos pelo encerramento definitivo da sua conta digital. Este procedimento visa alinhar os perfis dos clientes com nossas políticas internas e comerciais, legitimando as operações da Efí dentro das determinações dos órgãos reguladores e adequando-as aos termos de uso. Reforçamos que a análise contínua de contas é um processo obrigatório para as Instituições de Pagamentos e visa a segurança tanto do Cliente quanto da Efí. Após o encerramento da conta, eventuais recursos disponíveis como saldo, poderão ser transferidos somente via TED, para contas bancárias de mesma titularidade. Essa ação deverá ser executada via [LINK]. Cientes do seu conhecimento acerca do que estabelece nossos Termos e Condições de Uso, também denominado Contrato, contamos com a sua compreensão e permanecemos à disposição. Atenciosamente, Efí S",
+            "EntryDate": "2024-07-30T00:27:37.000Z",
+            "ActorName": "System"
+          }, {
+            "Message": "Olá, [CLIENTE]. Agradecemos pelo retorno. Gentileza nos encaminhe uma das notas fiscais mencionadas para verificarmos. Atenciosamente, Efí S",
+            "EntryDate": "2024-07-23T11:54:43.000Z",
+            "ActorName": "System"
+          }, {
+            "Message": "Olá, [CLIENTE]. Agradecemos o retorno. Destacamos que sua conta está atualmente em processo de análise, um procedimento padrão necessário para cumprir com as Exigências Regulatórias e os Termos e Condições de Uso do nosso contrato. Gostaríamos de salientar que a finalidade desta solicitação é compreender melhor o seu empreendimento e validar as transações efetuadas por meio da plataforma Efí. Portanto, solicitamos que: Confirme se possui um website e/ou redes sociais para fins comerciais. Explique como é estabelecida a relação contratual de prestação de serviço entre sua empresa e seus clientes. Em caso de disputas sobre valores, gostaríamos de saber como é possível comprovar que o serviço foi prestado ou que o produto foi entregue. Esta informação nos ajudará a entender melhor seu negócio e garantir transações seguras e confiáveis por meio da Efí. Atenciosamente, Efí S",
+            "EntryDate": "2024-07-06T00:11:13.000Z",
+            "ActorName": "System"
+          }, {
+            "Message": "Olá, [CLIENTE]. Agradecemos pelo retorno. Informamos que não foi possível validar a prestação de serviço através dos documentos apresentados. Conforme rol de documentos aceitos informado anteriormente, o contrato de prestação de locação é válido, desde que a atividade exercida seja locações de imóveis. Aguardamos seu retorno. Atenciosamente, Efí S",
+            "EntryDate": "2024-06-17T23:13:54.000Z",
+            "ActorName": "System"
+          }
+        ]
+      }
+    }
+  ]
+}
+
+\end{lstlisting}
+\newpage
+\FloatBarrier
+\subsection{Resultado da avaliação}
+
+\begin{table}[htbp]
+\centering
+\caption{Resultado da avaliação}
+\label{tab:resultado-avaliacao}
+\begin{tabular}{|L|M|}
+\hline
+\textbf{Assunto} & Suspensão e encerramento de conta digital por análise de conformidade \\ \hline
+\textbf{Motivo} & Problemas \\ \hline
+\textbf{Problema} & Conta digital suspensa e posteriormente encerrada devido a análise de conformidade e falta de validação de documentos. \\ \hline
+\textbf{Produtos} & Conta digital, Pix \\ \hline
+\textbf{Resolução} & Conta encerrada definitivamente após análise. Saldo disponível será transferido via TED para conta bancária de mesma titularidade. \\ \hline
+\textbf{Resumo} & Em 07 de junho de 2024, a conta digital de [CLIENTE] foi suspensa para análise de conformidade. [CLIENTE] forneceu informações sobre seu empreendimento e documentos, mas a validação não foi concluída com sucesso. Em 30 de julho de 2024, a conta foi encerrada definitivamente. [CLIENTE] foi informado que o saldo disponível seria transferido via TED para uma conta bancária de mesma titularidade. O cliente expressou preocupação e frustração durante o processo, mas o sentimento final foi neutro. \\ \hline
+\textbf{Sugestão} & O analista poderia ter sido mais claro e específico sobre os documentos necessários desde o início, evitando múltiplas interações. Implementar um sistema de upload de documentos diretamente no portal do cliente pode agilizar o processo. Para o marketing, explorar a segurança e conformidade como pontos fortes pode atrair clientes que valorizam essas características. Para o time de produto, considerar a criação de uma seção no aplicativo onde os clientes possam acompanhar o status da análise de documentos em tempo real e receber notificações sobre pendências. \\ \hline
+\textbf{Tags} & Bloqueio de conta, encerramento de conta, documentação pendente, validação de documentos, chave Pix, transferência Pix \\ \hline
+\end{tabular}
+\end{table}
+
+\FloatBarrier
+\subsection{Considerações sobre a avaliação}
+
+A avaliação está alinhada com os eventos ocorridos durante o atendimento. Para aprimorar o detalhamento e a padronização das datas, foram realizados ajustes no prompt nas versões mais recentes do projeto, desenvolvidas após este estudo:
+
+\begin{tcolorbox}
+“Você receberá datas no formato ``2024-06-07T09:40:03.000Z'' mas para as respostas que envolverem datas, adote o formato dd/mm/aaaa.”
+
+(...)
+
+“Resumo: Resumo do atendimento. Inclua detalhes como datas, números, etc. Mencione os nomes dos envolvidos. VERIFIQUE AS DATAS ANTES DE ESCREVER PARA manter em ordem cronológica. IGNORE O PARÂMETRO ``ActorName''. Você não deve, em hipótese alguma, usar termos como ``o sistema respondeu'' e sim o nome da pessoa que assina a mensagem. Não omita detalhes importantes.”
+\end{tcolorbox}
+
+Após os ajustes no prompt, o resumo mudou para:
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{|p{3cm}|p{12cm}|}
+\hline
+\textbf{Resumo} & Em 07/06/2024, a Efí S.A. [CLIENTE] sobre a suspensão preventiva de sua conta digital, solicitando informações adicionais e documentos para análise. [CLIENTE] respondeu em 09/06/2024, fornecendo detalhes sobre seu empreendimento e solicitando a reativação da conta. Em 28/06/2024 e 18/07/2024, [CLIENTE] enviou mais informações sobre suas atividades comerciais. Em 23/07/2024, [CLIENTE] esclareceu que não vende produtos, mas ganha comissões por divulgação. Em 30/07/2024, a Efí S.A. informou o encerramento definitivo da conta de [CLIENTE]. Em 02/08/2024, [CLIENTE] forneceu dados bancários para transferência do saldo. Em 05/08/2024, a Efí S.A. orientou sobre a transferência via TED. Em 19/08/2024, [CLIENTE] relatou erro na transferência, e a Efí S.A. informou que a solicitação foi encaminhada para o departamento responsável. \\ \hline
+\end{tabular}
+\end{table}
+\section{Dashboard com resultados quantitativos}
+
+A análise quantitativa dos resultados foi conduzida por meio de um \textit{dashboard} (ver Figura \ref{fig:dashboard}), que permite o monitoramento em tempo real do desempenho dos atendimentos e das avaliações geradas pelos modelos.
+
+O \textit{dashboard} se destaca especialmente na identificação dos problemas e produtos mais recorrentes em diferentes intervalos de tempo, com ênfase no fator tempo real.
+
+\FloatBarrier
+
+% Dashboard completo
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{figuras/dashboard.png}
+\caption{Visão geral do dashboard com análise quantitativa de tags, produtos, motivos de contato e filtros específicos, permitindo o monitoramento detalhado do desempenho dos atendimentos e a identificação de padrões relevantes.}
+\label{fig:dashboard}
+\end{figure}
+
+% Gráfico de Tags
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{figuras/Tags.png}
+\caption{Distribuição das tags mais utilizadas em atendimentos, destacando a frequência com que cada tag foi aplicada, com ``Tag 1'' sendo a mais comum.}
+\label{fig:tags}
+\end{figure}
+
+% Gráfico de Produtos
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{figuras/Produtos.png}
+\caption{Quantidade normalizada de menções a produtos durante os atendimentos, com ``Produto 1'' sendo o mais referenciado em relação aos demais.}
+\label{fig:produtos}
+\end{figure}
+
+% Gráfico de Motivo do Contato
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{figuras/Motivos.png}
+\caption{Motivos dos contatos classificados em problemas, solicitações, dúvidas e reclamações, com ``Problemas'' sendo o motivo mais frequente.}
+\label{fig:motivos}
+\end{figure}
+
+% Gráfico de Filtro de Produtos Específicos no tempo
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{figuras/Produtos no tempo.png}
+\caption{Evolução temporal da quantidade normalizada de dois produtos anonimizados, analisando como a menção a esses produtos variou ao longo do tempo.}
+\label{fig:produtos-no-tempo}
+\end{figure}
+
+% Gráfico de Filtro de Tags Específicas no tempo
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{figuras/Tags no tempo.png}
+\caption{Evolução temporal do uso de duas tags anonimizadas, destacando as variações na frequência dessas tags ao longo do tempo.}
+\label{fig:tags-no-tempo}
+\end{figure}
+
+\FloatBarrier
+\section{Principais desafios}
+
+Após todo o processo de desenvolvimento e implantação, foram elencados os seguintes desafios como os mais relevantes:
+
+\begin{itemize}
+    \item Sensibilidade ao prompt
+    \item Alucinações
+    \item Custos
+    \item Volume de dados
+    \item Normalização de dados quantitativos
+\end{itemize}
+
+\subsection{Sensibilidade ao prompt e alucinações}
+
+Os modelos de grande linguagem não realizam raciocínio no sentido humano. Eles funcionam como Processamento de Linguagem Natural (PLN) avançado, processando o input e organizando a informação com base em elementos e aprendizados de seu vasto conjunto de dados de treinamento. Por essa razão, o resultado gerado é altamente sensível à estrutura do prompt utilizado.
+
+A construção de um prompt ainda depende muito de tentativa e erro. Na versão de prompt deste projeto (\ref{box:prompt-final}), foram realizados dezenas de testes (provavelmente mais de 100, embora não tenha sido contabilizado precisamente).
+
+\subsection{Alucinações}
+
+Quando o prompt instrui de forma imperativa que o modelo organize informações que não estão presentes no dataset, é quase certo que ele inventará dados para atender à solicitação. Neste contexto, vale mencionar três exemplos:
+
+\begin{itemize}
+    \item \textbf{Análise de sentimento:} É comum que, em alguns atendimentos, o cliente não expresse agradecimento explícito quando sua dúvida é resolvida. Nesses casos, pode ser difícil determinar se o cliente ficou satisfeito ou qual foi seu sentimento. Mesmo assim, o modelo tende a inferir sentimentos. Em uma versão recente do prompt, isso foi mitigado com o seguinte ajuste:
+
+    \begin{tcolorbox}
+    ``Sentimento: Responda em uma palavra qual o sentimento do cliente. Selecione da LISTA DE SENTIMENTOS, informada acima. NÃO TIRE CONCLUSÕES PRECIPITADAS. Na dúvida, responda apenas ``indefinido''.''
+    \end{tcolorbox}
+
+    \item \textbf{Datas e horários:} Devido a um bug, inicialmente não estávamos enviando as datas das interações, o que resultou em resumos com datas inventadas pelo modelo. Após corrigirmos o dataset, incluindo as datas corretas, o modelo passou a gerar resumos com datas precisas.
+
+    \item \textbf{Contextos de atendimento com pouca informação:} Mesmo em atendimentos com pouco conteúdo trocado entre cliente e agente, o modelo pode criar uma narrativa completa a partir de poucas frases.
+\end{itemize}
+
+Esses desafios podem ser solucionados (ou mitigados) com o uso de prompts dinâmicos, ajustados conforme o volume e a natureza das interações (utilizando algoritmos para verificar a quantidade de caracteres ou interações), ou até mesmo utilizando diferentes agentes de IA que classificam a robustez ou a natureza do dataset, selecionando dinamicamente o prompt mais adequado.
+
+\subsection{Custos}
+
+O custo médio por avaliação utilizando o modelo gpt-4o é de \$0,01355. Considerando um volume de 100 mil avaliações mensais, o custo total seria de \$1.355,00 por mês. Com a cotação do dólar em R\$5,47, conforme verificado em 20 de agosto de 2024, o custo mensal em reais seria de R\$7.302,45.
+
+Também foram realizados testes com o modelo GPT-4o-mini, que, embora tenha um custo aproximadamente 97\% menor por 1 milhão de tokens em comparação ao gpt-4o, apresentou resultados abaixo do esperado em alguns campos de resposta, especialmente no resumo, sem que fossem feitos ajustes significativos na arquitetura do projeto.
+
+\subsection{Volume de dados}
+
+Um dos desafios foi que o prompt de entrada, para atendimentos longos envolvendo múltiplos canais como chats, WhatsApp e e-mails, frequentemente ultrapassava o limite da API. Para contornar isso, optamos por avaliar separadamente as conversas de chats e WhatsApp, integrando esses resultados à análise final do atendimento, que incluía os outros canais. Isso garantiu a eficiência da análise, apesar das limitações técnicas.
+
+\subsection{Normalização de dados quantitativos}
+
+Para definir uma lista eficaz de tags a ser incluída no prompt e garantir a normalização dos resultados, foi adotada a estratégia de deixar o algoritmo rodando por algumas semanas sem uma lista predefinida de tags. Durante esse período, o modelo gerou tags de forma autônoma, refletindo os tópicos mais recorrentes nos atendimentos. Em seguida, foi utilizado o modelo GPT-4o para, a partir dessas tags, construir uma lista abrangente dos principais tópicos. Com essa lista definida, o prompt foi ajustado para incluir as tags predefinidas, instruindo o modelo a selecionar as mais relevantes, o que permitiu a normalização dos resultados. A seguir, apresenta-se o trecho do prompt ajustado com a lista de tags resultante dessa técnica.
+
+\begin{tcolorbox}
+Tags: Lista de principais palavras-chave do atendimento (Evite tags não relevantes como ``atendimento ao cliente'' ou ``ticket de suporte''). Para reduzir a redundância entre esta e futuras avaliações, viabilizar normalização em relatórios e manter a informação relevante, aqui estão as tags principais: Cartão de Crédito, Cartão de Débito, Cartão Pré-Pago, Cartão Virtual, Emissão de Cartão, Bloqueio de Cartão, Cancelamento de Cartão, Perda/Roubo de Cartão, Segunda Via de Cartão, Transferência Pix, Cobrança Pix, Chave Pix, QR Code Pix, Erro Pix, Bloqueio de Pix, Devolução Pix, Abertura de Conta, Encerramento de Conta, Bloqueio de Conta, Conta Digital, Conta Física, Conta Jurídica, Conta Poupança, Redefinição de Senha, Troca de Senha, Bloqueio de Senha, Senha Eletrônica, Envio de Documentos, Documentos Pessoais, Documentos Empresariais, Documentação Pendente, Validação de Documentos, Contestação de Transação, Transação Não Reconhecida, Transação Bloqueada, Erro de Transação, Pagamento Pix, Pagamento Boleto, Pagamento de Contas, Pagamento Não Identificado, Pagamento Duplicado, Erro no Sistema, Erro no Aplicativo, Erro de Autenticação, Erro de Pagamento, Erro de Cadastro, Autenticação de Dispositivo, Autenticação em Dois Fatores, Validação de Identidade, Validação de Selfie, Autenticação Facial, Emissão de Boleto, Pagamento de Boleto, Boleto Não Registrado, Boleto Duplicado, Boleto Não Pago, Limites (para lidar com solicitações de aumento ou redução de limite), Estorno de Pagamento (para lidar com devoluções e reembolsos), Acesso ao Aplicativo (para problemas específicos de login ao aplicativo), Acesso Web (para problemas específicos de login a conta pelo navegador), Atualização de Cadastro (para mudanças em informações pessoais ou empresariais). Se não encontrar uma tag, pode criar novas tags.
+\end{tcolorbox}

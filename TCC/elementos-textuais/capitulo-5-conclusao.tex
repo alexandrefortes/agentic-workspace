@@ -1,0 +1,33 @@
+\chapter{Conclusão}
+
+O objetivo principal deste projeto, que era aplicar o modelo LLM GPT-4 na automação da avaliação de atendimento ao cliente e validar sua eficácia por meio de uma prova de conceito em ambiente real, foi plenamente atingido.
+
+\section{Hipótese inicial e resultados}
+
+A hipótese inicial sugeria que o LLM poderia abstrair automações complexas de avaliação de atendimento, eliminando a necessidade de agentes investirem tempo na classificação de todos os chamados ou na construção e manutenção de formulários e fluxos necessários para realizar a tarefa manual de análise. Com isso, seria possível criar um sistema de avaliação flexível a longo prazo, que demandasse apenas ajustes em prompts para atender novas necessidades e melhorias, podendo ser realizado por profissionais não necessariamente de TI, como lideranças de atendimento ou analistas de qualidade.
+
+Os resultados obtidos corroboram essa hipótese. A flexibilidade do LLM demonstrou ser um dos seus maiores pontos fortes, permitindo que a automação da avaliação fosse adaptada com facilidade para novas demandas e contextos, apenas ajustando os prompts. Esse processo simplificado permitiu que profissionais com conhecimento do processo de atendimento, mas sem expertise técnica, pudessem realizar esses ajustes, confirmando que o modelo atende à necessidade de flexibilidade e adaptação ao longo do tempo, sem a necessidade de envolvimento constante de profissionais de TI.
+
+\section{Discussão dos objetivos específicos}
+
+\subsection{Explorar e definir conceitos fundamentais de LLMs e engenharia de prompt}
+
+A engenharia de prompt se mostrou essencial para obter resultados satisfatórios. A capacidade de ajustar os prompts adequadamente determinou a qualidade das respostas geradas pelo modelo, evidenciando a importância do domínio técnico sobre essa área.
+
+\subsection{Avaliar a eficácia e a precisão do LLM comparando seus resultados com análises humanas}
+
+As análises geradas pelo modelo, embora não superem aquelas realizadas pelos melhores profissionais, demonstram ser superiores às executadas por analistas típicos. É importante ressaltar que a comparação relevante para essa tarefa não deve ser feita entre o desempenho do modelo de linguagem e o dos profissionais mais qualificados, mas sim entre o modelo e o profissional que, usualmente, seria responsável por executar essa função.
+
+Considerando que a execução dessas tarefas pode ser massante e que um único analista dificilmente consegue realizar todas as análises necessárias, limitando-se apenas a uma amostragem pequena, a automação se apresenta como uma solução eficaz. Isso é especialmente relevante diante do fato de que o algoritmo realiza dezenas de milhares de análises mensais a um custo aproximado ao custo médio de um analista de qualidade.
+
+\subsection{Identificar vantagens, desafios e oportunidades na automação cognitiva com LLMs}
+
+Durante a implementação, foram identificados desafios, como o processamento de grandes volumes de dados e a adaptação dos modelos de linguagem para cenários complexos. Um dos principais desafios foi o tamanho dos prompts de entrada, que, em atendimentos longos e multicanais, frequentemente excediam os limites suportados pela API. Isso exigiu uma análise segmentada das conversas de diferentes canais, como chats e WhatsApp, com a posterior integração dos resultados em uma análise unificada.
+
+Outro desafio relevante foi o custo operacional. O uso de modelos menores, como o gpt-4o-mini, apresentou uma redução de 97\% nos custos; no entanto, devido à complexidade da tarefa, as análises resultaram em menor detalhamento e precisão. Para viabilizar economicamente o uso de modelos mais baratos, considerou-se a simplificação das tarefas ou a adoção de estratégias, como prompts dinâmicos baseados na complexidade e no tamanho dos dados, além de análises segmentadas para cada aspecto do atendimento.
+
+Apesar dos desafios, foram identificadas oportunidades significativas na automação com LLMs. A flexibilidade desses modelos permite automatizar tarefas que antes exigiriam grandes investimentos em software ou trabalho humano intensivo. A possibilidade de ajustar rapidamente os prompts, sem a necessidade de profissionais de programação ou modificações em códigos complexos, possibilita que líderes de atendimento ou analistas de qualidade realizem otimizações em tempo real. A avaliação de custos deve considerar não apenas o processamento do modelo, mas também o tempo de desenvolvimento, manutenabilidade e o custo de profissionais especializados.
+
+Foi identificada a possibilidade de aplicar essa tecnologia em outras áreas, como na avaliação de processos comerciais e no acionamento de gatilhos automáticos para campanhas de marketing, além de outros processos paralelos, como detecção de fraudes e geração de insights para ajustes ou desenvolvimento de novos produtos. Dessa forma, o projeto não apenas otimiza a avaliação de atendimentos, mas também apresenta o potencial de transformar outros processos operacionais e estratégicos dentro da organização.
+
+Por fim, foi comprovado que é viável, tanto em termos de custos quanto de qualidade, aplicar IAs generativas na automação da avaliação de atendimento ao cliente. O projeto encontra-se atualmente em produção e tem sido utilizado com sucesso pelos times de qualidade do atendimento. O feedback recebido até o momento tem sido positivo, confirmando a viabilidade e a eficácia dessa aplicação na automação da avaliação de atendimento ao cliente.

@@ -1,0 +1,155 @@
+\section{Implementação do projeto}
+
+\subsection{Escopo de canais para a avaliação}
+
+\begin{itemize}
+    \item Chat web
+    \item Chat app
+    \item Chat WhatsApp
+    \item Chat Discord
+    \item E-mail
+    \item Chamados de atendimento em ambiente de conta logada
+    \item Notas internas dos agentes de atendimento
+\end{itemize}
+
+O processo de atendimento em que se aplicou o estudo é omnichannel, permitindo que o cliente transite entre diferentes canais durante uma mesma interação. Um desafio inicial foi o tamanho excessivo do prompt de entrada, que incluía as conversas e as notas dos agentes, tornando-o incompatível com as limitações da API da OpenAI. Para mitigar esse problema, cada conversa por chat foi pré-analisada utilizando o mesmo prompt, e o resultado dessa análise foi incorporado ao prompt de avaliação final de um chamado completo, juntamente com os dados dos demais canais.
+
+\newpage
+\subsection{Visão geral do processo de atendimento omnichannel e consumo da API}
+
+A seguir, apresenta-se um fluxograma que ilustra o processo geral em que este estudo foi aplicado. Os blocos destacados em laranja representam as áreas de foco deste estudo.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{figuras/Processo de atendimento.png}
+    \caption[Fluxograma do processo de atendimento]{Visão geral do processo de atendimento omnichannel e consumo da API.}
+    \label{fig:fluxograma-atendimento}
+    \legend{Fonte: Efí, 2024.}
+\end{figure}
+
+\newpage
+\subsection{Prompt construído}
+
+O prompt elaborado demonstra boas práticas de prompting ao combinar clareza, especificidade, organização e controle rigoroso do escopo das respostas. O uso de exemplos específicos e a limitação das opções permitidas minimizam ambiguidades, enquanto a formatação padronizada das respostas facilita o processamento subsequente. 
+
+Essa abordagem é coerente com as técnicas discutidas por Qiao et al. (2023), que destacam a eficácia da divisão do raciocínio em múltiplos estágios para tarefas complexas, além da importância de fornecer instruções detalhadas para minimizar ambiguidades e melhorar a precisão dos resultados. 
+
+A seguir, apresenta-se a versão mais recente do prompt no momento da escrita deste estudo.
+
+\input{codigos/prompt-v1}
+
+\subsection{Discussão sobre o prompt}
+
+\subsubsection{Clareza e especificação do contexto}
+O prompt é introduzido com uma clara definição de contexto: ``Você é um especialista em atendimento de suporte técnico em uma fintech''. Essa instrução estabelece uma expectativa de expertise no domínio específico, preparando o modelo para interpretar os dados de maneira contextualizada. A continuação, ``Você receberá um JSON com o conteúdo de todo o atendimento realizado, podendo conter conversas de chat, whatsapp, email e outros'', delimita o escopo dos dados a serem analisados, garantindo que o modelo compreenda o formato e a abrangência das informações fornecidas.
+
+\subsubsection{Estrutura e organização}
+O prompt é organizado, detalhando as informações específicas a serem extraídas de cada interação. Por exemplo, para o campo ``Motivo", o prompt solicita que o modelo identifique o ``Principal motivo pelo qual o cliente entrou em contato", oferecendo sugestões como ``Dúvidas, Problemas, Solicitações, Sugestões, Reclamações, Acompanhamento Interno". Essa abordagem guiada minimiza interpretações errôneas e direciona o modelo a respostas dentro do escopo esperado.
+
+A seção de \textit{Tags} é abrangente, fornecendo uma lista extensa de termos como ``Cartão de Crédito, Cartão de Débito, Cartão Pré-Pago, Bloqueio de Cartão, etc". Essa especificidade não apenas facilita a categorização das interações, mas também permite a criação de novas \textit{tags}, caso as pré-definidas não sejam adequadas: ``Se não encontrar uma tag, pode criar novas tags''.
+
+A lista de \textit{tags} no \textit{prompt} foi levantada a partir de uma semana de análises de atendimentos utilizando uma versão mais aberta para as \textit{tags}.
+
+\subsubsection{Especificação do formato de saída}
+O formato de saída é especificado para assegurar a uniformidade dos dados: ``Retorne um JSON em uma linha sem espaços em branco e com todas as chaves começando com a primeira letra maiúscula e o restante minúsculo''. Além disso, o \textit{prompt} instrui que ``no valor das chaves, mantenha o padrão: primeira letra da primeira palavra como maiúscula e restante minúsculo''. Essas diretrizes detalhadas são fundamentais para garantir a consistência no processamento automatizado e na análise posterior dos dados.
+
+\subsubsection{Normalização de respostas e limitação do escopo}
+Os campos ``Motivo'', ``Tags'', ``Sentimento'', ``SentimentoEmoji'', ``SentimentoFinal'', ``SentimentoFinalEmoji'' e ``Produtos'' foram elaborados para garantir a normalização das respostas, o que é fundamental para a construção de relatórios quantitativos. A normalização desses campos permite a padronização das respostas, facilitando a agregação de dados e a realização de análises estatísticas.
+
+Para os campos ``Produtos'' e ``Tags'', o prompt instrui o modelo a priorizar a lista de referência, mas permite a criação de novos itens, se necessário. Para ``Produtos'': ``Se não encontrar um produto na lista, crie novos produtos''. E para ``Tags'': ``Se não encontrar uma tag, pode criar novas tags''. A criação de novas tags e produtos é permitida apenas quando os itens listados não se aplicam, assegurando que o modelo forneça respostas relevantes. Isso possibilita a identificação de novos produtos que os clientes podem estar demandando e de temas ainda não mapeados na lista de tags.
+
+Para a categorização de sentimentos, é fornecida uma ``LISTA DE SENTIMENTOS'', com exemplos como satisfeito (\emoji{grinning}), neutro (\emoji{neutral-face}), esperançoso (\emoji{pray}), curioso (\emoji{thinking}), preocupado (\emoji{worried}), frustrado (\emoji{persevere}), confuso (\emoji{confused}), desesperado (\emoji{weary}), indiferente (\emoji{expressionless}), irritado (\emoji{angry}), triste (\emoji{cry}), ansioso (\emoji{anxious-face-with-sweat}). Essa lista é essencial para padronizar as respostas, evitando ambiguidades e promovendo consistência.
+
+\subsubsection{Verificação de respostas}
+A conclusão do \textit{prompt} inclui uma instrução para verificação das respostas: ``Verifique cuidadosamente suas respostas antes de concluir para assegurar que todas as informações fornecidas se alinhem estritamente com os requisitos''. Esta orientação ajudou a garantir que as respostas estejam corretas e aderentes às especificações fornecidas, mantendo a integridade dos dados. A atenção às ``datas das mensagens trocadas'' é enfatizada para assegurar a precisão temporal na análise.
+
+\subsubsection{Campos qualitativos}
+Além dos campos quantitativos normalizados, o prompt também inclui campos qualitativos que permitem uma análise contextualizada dos atendimentos ao cliente. Esses campos incluem ``Assunto'', ``Problema'', ``Sugestao'', e ``Resumo'', e são projetados para capturar nuances e detalhes que não podem ser facilmente quantificados.
+
+\subsubsection{Assunto}
+O campo ``Assunto'' solicita ao modelo que crie um título que sintetize o tema principal do atendimento. A instrução é: ``Crie um assunto que ilustre da melhor forma possível este atendimento''. Este campo foi projetado pois nem sempre um assunto de chamado de atendimento é totalmente compatível com o conteúdo, ajudando a identificar o foco principal de cada caso.
+
+\subsubsection{Sugestão}
+O campo ``Sugestão'' é projeto para utilização em melhoria contínua, solicitando que o modelo forneça sugestões de melhorias tanto para o analista de atendimento quanto para os processos internos da empresa. A instrução detalha: ``Por favor, forneça sugestões de melhoria para o analista de atendimento e nossos processos. O que o analista poderia ter feito para melhorar nosso atendimento? Quais melhorias podemos implementar em nossos processos?'' Além disso, o prompt pede sugestões de marketing e produto, destacando oportunidades para melhorar a experiência do cliente e explorar ``gatilhos reptilianos'' — elementos psicológicos que podem influenciar o comportamento do consumidor. Esse campo é essencial para identificar áreas de melhoria e inovação, bem como para reforçar práticas bem-sucedidas.
+
+\subsubsection{Resumo}
+Por fim, o campo ``Resumo'' solicita uma síntese concisa de todo o atendimento, incluindo informações como datas, números e nomes relevantes: ``Resumo conciso do atendimento, interpretando todos os dados. Inclua detalhes como datas, números, nomes, etc''. Este campo serve para condensar a interação em um formato resumido, facilitando a revisão e análise de casos específicos.
+
+\subsection{Preparo dos dados}
+
+\subsubsection{Recuperação dos dados}
+Como o atendimento é omnichannel e focado em canais de texto, foi necessário coletar dados de diferentes fontes, como WhatsApp, App, Chat web, Discord, e-mail e respostas no ambiente logado das contas dos clientes. Isso introduziu um risco de consistência de dados que impactou a qualidade dos resumos, pois a cronologia das conversas pode estar fragmentada entre essas bases de dados. Como este é um estudo de prova de conceito (PoC), reorganizar esses dados de forma cronológica não foi viável para a versão utilizada no estudo. No entanto, esse problema foi mitigado incluindo instruções diretamente no prompt, como mostrado a seguir:
+
+\begin{tcolorbox}
+VERIFIQUE AS DATAS ANTES DE ESCREVER PARA manter em ordem cronológica.
+\end{tcolorbox}
+
+\subsubsection{Limpeza dos dados}
+Remoção de caracteres não relevantes, como HTML, espaços em branco e quebras de linha duplicadas. Os dados de um atendimento (chats, e-mails, notas internas dos agentes) foram organizados em JSON.
+
+A seguir, apresenta-se uma amostra de dados de um atendimento completo. Neste exemplo, as quatro primeiras mensagens resultam de um resumo gerado a partir de uma conversa no WhatsApp, utilizando o mesmo prompt. No JSON apresentado, todas as informações que poderiam identificar pessoas ou links foram substituídas por ``[Cliente]'', ``[Agente de atendimento]'' e ``[Link]''.
+
+\begin{lstlisting}[language=JSON, caption={Amostra de dataset}, style=customJSON]
+{
+  "messages": [
+    {
+      "content": {
+        "messagingSessionSummaries": [
+          {
+            "Summary": "Em 31 de julho de 2024, a cliente [Cliente] entrou em contato via WhatsApp relatando problemas para acessar sua conta e a necessidade de atualizar o endereço para a entrega de um cartão. A atendente [Agente de atendimento] orientou a cliente a redefinir a senha através de um e-mail enviado e a atualizar o endereço via ticket de suporte. A cliente foi instruída a seguir os procedimentos e ficou esperançosa com a resolução.",
+            "StartTime": "2024-07-31T17:54:29.000Z",
+            "EndTime": "2024-07-31T18:38:03.000Z"
+          },
+          {
+            "Summary": "Em 1 de agosto de 2024, a cliente [Cliente] entrou em contato via WhatsApp relatando que não conseguia acessar sua conta após ter seu celular roubado e perder o número de telefone cadastrado. O analista [Agente de atendimento] verificou a situação e informou que seria necessário um bloqueio temporário da conta e a validação de identidade para resolver o problema. A cliente forneceu os dados solicitados e foi informada que um analista entraria em contato por telefone para finalizar o processo. A cliente terminou o atendimento esperançosa de que o problema seria resolvido em breve.",
+            "StartTime": "2024-08-01T18:46:03.000Z",
+            "EndTime": "2024-08-01T19:37:52.000Z"
+          },
+          {
+            "Summary": "Em 02 de agosto de 2024, a cliente [Cliente] entrou em contato via WhatsApp relatando dificuldades para acessar sua conta, pois o código de verificação estava sendo enviado para um número de telefone antigo. Após várias tentativas e frustrações, o analista [Agente de atendimento] reenviou o e-mail com o procedimento correto para alterar o número de telefone e a senha. A cliente foi orientada a seguir os passos e aguardar a confirmação por e-mail. O atendimento foi finalizado com a cliente esperançosa de que o problema seria resolvido.",
+            "StartTime": "2024-08-02T18:15:08.000Z",
+            "EndTime": "2024-08-02T18:52:53.000Z"
+          },
+          {
+            "Summary": "Em 05/08/2024, a cliente [Cliente] entrou em contato via WhatsApp relatando problemas para acessar o aplicativo devido à troca de número de telefone, o que impedia a redefinição de senha. A analista [Agente de atendimento] orientou a cliente a seguir os passos do ticket de suporte já aberto e aguardar o retorno do time responsável após o envio dos documentos necessários. A cliente expressou frustração com a dificuldade de acesso, mas a conversa terminou de forma neutra.",
+            "StartTime": "2024-08-05T17:17:59.000Z",
+            "EndTime": "2024-08-05T17:55:12.000Z"
+          }
+        ],
+        "messagesIntranet": null,
+        "liveChatTranscriptSummaries": [],
+        "emailMessages": [
+          {
+            "Message": "Olá, [Cliente]. Estamos encaminhando abaixo o procedimento a ser realizado para a alteração de seus dados cadastrais. É muito importante que você nos informe, respondendo a esse mesmo ticket, quando finalizar o envio dos documentos solicitados, para que possamos seguir com as alterações. Após recebidos os documentos através do link e a informação de que o processo foi concluído, o retorno será dado em até 01 (um) dia útil. Para iniciar o processo de Alteração dos Dados Cadastrais da sua Conta Digital, pedimos por gentileza, para acessar o link abaixo, através do seu smartphone: Link: [Link] Tenha em mãos o seu RG ou a sua CNH, para que possamos validar a sua identidade e, ao final do processo, informe os dados cadastrais que deseja alterar. Lembramos que a Efí não solicita nenhum dado de acesso à sua conta nem a realização de transação financeira por redes sociais, WhatsApp, telefone, e-mail ou outros canais. Conte com a gente! Atenciosamente, [Agente de atendimento]",
+            "EntryDate": "2024-08-02T18:31:05.000Z",
+            "ActorName": "System"
+          },
+          {
+            "Message": "Olá, [Cliente]. Confirmo o recebimento da sua comunicação e informo que o setor responsável foi acionado. Por favor, aguarde o retorno do nosso setor, que será conduzido por meio deste ticket. Permaneço à disposição! Conte com a gente! Atenciosamente, [Agente de atendimento]",
+            "EntryDate": "2024-08-01T20:09:14.000Z",
+            "ActorName": "System"
+          }
+        ]
+      }
+    }
+  ]
+}
+\end{lstlisting}
+
+\subsection{Hiperparâmetro temperatura}
+
+O hiperparâmetro ``temperatura''¹ nas APIs da OpenAI desempenha um papel crucial na determinação da criatividade e variação nas respostas geradas pelos modelos de linguagem. Esse parâmetro controla a aleatoriedade das previsões: valores mais baixos (próximos de 0) fazem com que o modelo produza respostas mais determinísticas e previsíveis, enquanto valores mais altos (próximos de 1) permitem maior diversidade nas saídas, incentivando respostas mais criativas.
+
+Para diferentes tipos de tarefas, recomenda-se ajustar a temperatura conforme a necessidade específica. Por exemplo, para tarefas de criação de conteúdo ou brainstorming, utilizam-se frequentemente valores de temperatura mais altos, como 0,7 ou 0,8, para promover a geração de ideias mais variadas e criativas. Em contraste, para tarefas que exigem maior precisão e consistência, como a avaliação de atendimentos ao cliente, é preferível utilizar valores baixos de temperatura para garantir que as respostas sejam mais objetivas e alinhadas com a realidade do contexto.
+
+\begin{quote}
+\small ¹ OPENAI. API Reference - Temperature. Disponível em: \url{https://platform.openai.com/docs/guides/text-generation/how-should-i-set-the-temperature-parameter}. Acesso em: 09 ago. 2024.
+\end{quote}
+
+Neste estudo, onde se busca um comportamento mais ``conservador'' e aderente aos dados, experimentaram-se diferentes configurações de temperatura e, após análise, optou-se por utilizar o valor de 0,1. Este ajuste foi escolhido para assegurar que o modelo operasse de maneira consistente e com foco na precisão, minimizando desvios criativos que poderiam comprometer a avaliação dos atendimentos.
+
+\subsection{Automação}
+O processo de avaliação é disparado automaticamente cada vez que um chamado é encerrado. Se o cliente ou os agentes reabrem o chamado, atualizam e encerram novamente, a avaliação é atualizada, conforme ilustrado na Figura \ref{fig:fluxograma-atendimento} - Visão geral do processo de atendimento omnichannel e consumo da API.
+
+\subsection{gpt-4o-mini}
+Foram realizados testes utilizando o modelo gpt-4o-mini, que é mais rápido e apresenta um custo 97\% menor em comparação ao gpt-4o. Mais detalhes no Capítulo 4 - Resultados.

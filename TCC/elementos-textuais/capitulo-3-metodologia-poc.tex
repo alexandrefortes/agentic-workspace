@@ -1,0 +1,64 @@
+\section{Prova de conceito (POC)}
+Para validar a aplicação dos LLMs na automação da avaliação de atendimento ao cliente, foi realizada uma prova de conceito utilizando a API da OpenAI, especificamente o modelo gpt-3.5-turbo. O objetivo deste teste foi verificar, na prática, a viabilidade do projeto.
+
+\subsection{Critérios de avaliação de sucesso}
+Os resultados das avaliações devem representar, de forma consistente, a realidade do atendimento realizado.
+
+\subsection{Coleta e preparação de dados}
+Inicialmente, foram coletados dados textuais dos logs de chat, que abrangem as comunicações entre clientes e atendentes. Os nomes dos participantes da conversa foram alterados para ``CLIENTE'' e ``ESPECIALISTA DE SUPORTE''. Todos os links foram anonimizados como [link anonimizado] e números específicos de ticket como ``Ticket Nº[anônimo]'' para preservar a privacidade.
+
+A seguir, apresenta-se um exemplo de conversa com cliente utilizada na POC:
+
+\input{atendimentos/conversa-cliente-poc}
+
+\newpage
+\subsection{Implementação dos testes}
+Utilizando o modelo gpt-3.5-turbo, as conversas de chat foram submetidas à análise. O modelo foi configurado para interpretar as interações, avaliar a qualidade do atendimento e gerar insights acionáveis sobre as conversas. A configuração da API incluiu ajustes nos prompts para garantir que as respostas fossem consistentes e úteis.
+A seguir, apresenta-se o prompt da prova de conceito:
+
+\begin{lstlisting}[language=Python, caption={Prompt da prova de conceito},style=Python, label={lst:prompt-poc}]
+prompt = f"""
+Analise a seguinte conversa com um cliente em nossos canais de atendimento e forneça as informações solicitadas em JSON:
+
+{conversa}
+
+Forneça uma análise detalhada da conversa incluindo:
+- tags: Lista de palavras-chave do atendimento.
+- sentimento: Cliente está feliz, chateado ou algo assim?
+- problema: Qual foi o problema do cliente?
+- resolucao: Teve resolução? Qual?
+- sugestao: Sugestão de melhoria para nosso atendimento.
+- produtos: Quais produtos o cliente teve problema?
+- resumo: Resumo do atendimento, interpretando os dados acima também.
+"""
+\end{lstlisting}
+
+\subsection{Análise dos resultados}
+
+A qualidade das análises automáticas demonstrou-se consistente com a realidade das conversas, indicando que o modelo foi capaz de capturar nuances e contextos importantes nas interações. As principais métricas avaliadas foram:
+
+\begin{itemize}
+    \item Identificação de pontos críticos nas conversas;
+    \item Coerência na interpretação dos sentimentos dos clientes.
+\end{itemize}
+
+A seguir, apresenta-se o resultado da avaliação da conversa descrita na seção (\ref{box:chat-poc}) \textit{Coleta e Preparação de Dados}:
+
+\begin{lstlisting}[language=JSON, caption={Resultado da Avaliação da Conversa}, style=customJSON]
+ChatCompletionMessage(  
+    content='{  
+        "tags": ["acesso à conta", "bloqueio de conta", "ticket de suporte"],  
+        "sentimento do cliente": "chateado",
+        "problema": "Recebeu um e-mail informando o bloqueio da conta",
+        "resolucao": "Encaminhado para acessar o Ticket Nº[anônimo] e aguardar retorno",
+        "sugestao": "Melhorar a comunicação sobre procedimentos de bloqueio de conta",
+        "produtos": ["conta"],
+        "resumo": "O cliente [CLIENTE] estava chateado pois recebeu um e-mail informando o bloqueio da conta. O atendente [ESPECIALISTA DE SUPORTE] identificou que a conta estava sob análise e encaminhou para acessar um ticket de suporte. O cliente reclamou que a ligação não completou e o atendente orientou a interagir no ticket. Sugestão de melhoria é melhorar a comunicação sobre procedimentos de bloqueio de conta."
+    }', 
+    role='assistant', 
+    function_call=None, 
+    tool_calls=None
+)
+\end{lstlisting}
+
+Durante a prova de conceito, foram identificados desafios, como a necessidade de refinamento dos \textit{prompts} para o cenário de produção e a gestão de grandes volumes de dados. A prova de conceito demonstrou o potencial dos LLMs na automação cognitiva de processos de avaliação de atendimento ao cliente.
