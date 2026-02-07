@@ -206,3 +206,8 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 RELATORIO-CONFIGURACAO.md
+/ferramentas/conversao-abnt
+/ferramentas/printer
+/prints
+/meu-tcc-markdown
+.agent

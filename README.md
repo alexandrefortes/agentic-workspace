@@ -4,7 +4,7 @@
 
 > Produtividade com IA Contextual para Profissionais Não-Técnicos
 
-![Agentic IDE for Non-Devs Cover](cover2.png)
+![Agentic IDE for Non-Devs Cover](img/cover2.png)
 
 > 💡 **Dica para Iniciantes:**  
 > Não sabe como configurar o ambiente? **Peça ao próprio Kiro/Antigravity!**  
@@ -16,7 +16,7 @@
 > - Checar se Pandoc e MiKTeX estão instalados, se não, instalar
 > - Configurar o PATH do sistema
 > - Testar as conversões e tentar corrigir até conseguir
-> - Reportar se tudo funcionou" no RELATORIO-CONFIGURACAO.md
+> - Reportar se tudo funcionou" no doc/RELATORIO-CONFIGURACAO.md
 
 ---
 
@@ -326,7 +326,7 @@ Este próprio README foi convertido usando os scripts do projeto:
 
 ## 📁 Estrutura de Arquivos do Projeto
 
-Veja a [documentação completa da estrutura](estrutura-projeto.md) para entender como organizar os arquivos.
+Veja a [documentação completa da estrutura](doc/estrutura-projeto.md) para entender como organizar os arquivos.
 
 ---
 
