@@ -11,10 +11,8 @@
 > 
 > Basta dizer:  
 > *"Configure o ambiente de conversão de documentos para mim*
-> - Ler o script de configuração em `ferramentas/setup/configurar-ambiente.ps1`
-> - Ler os [requisitos em `ferramentas/conversao-word-e-pdf/requirements.txt`](ferramentas/conversao-word-e-pdf/requirements.txt)
+> - Ler e executar o script de configuração em `ferramentas/setup/configurar-ambiente.ps1`
 > - Checar se Pandoc e MiKTeX estão instalados
-> - Executar o script de setup ou configurar manualmente o PATH
 > - Testar as conversões" no doc/RELATORIO-CONFIGURACAO.md
 
 ---
@@ -25,7 +23,7 @@ Antes de decidir qual ferramenta usar, veja a comparação entre as duas princip
 
 | Produto | Plano | Preço/mês | O que vem no plano (relevante p/ uso pessoal) | Modelos (o que dá para escolher/usar) | Como o limite é medido |
 |---------|-------|-----------|-----------------------------------------------|---------------------------------------|------------------------|
-| **Amazon Kiro** | **Pro** | **US$ 20** ([Kiro][1]) | IDE/ambiente agentic; inclui **1.000 créditos/mês** e **overage pay-per-use** a **US$ 0,04/crédito** ([Kiro][1]) | Apenas modelos da Anthropic **Sonnet 4.5 / Haiku 4.5 / Opus 4.5** ([Kiro][1]) | **Créditos** (unidade de trabalho por tarefa; custos variam por modelo) ([Kiro][1]) |
+| **Amazon Kiro** | **Pro** | **US$ 20** ([Kiro][1]) | IDE/ambiente agentic; inclui **1.000 créditos/mês** e **overage pay-per-use** a **US$ 0,04/crédito** ([Kiro][1]) | Apenas modelos da Anthropic **Sonnet 4.5 / Haiku 4.5 / Opus 4.6** ([Kiro][1]) | **Créditos** (unidade de trabalho por tarefa; custos variam por modelo) ([Kiro][1]) |
 | **Google Antigravity** | **Google AI Pro** | **R$ 96,99** ([Gemini][2]) | Pacote Google AI com **2 TB**, **NotebookLM com benefícios**, **Gemini Pro** ([Google One][3]) | Antigravity tem **Gemini 3 Pro** e **Claude 4.5 Opus**([Google Help][4]) | Limites mais altos no Antigravity com **atualização a cada 5 horas** |
 
 [1]: https://kiro.ai/pricing
@@ -37,22 +35,24 @@ Antes de decidir qual ferramenta usar, veja a comparação entre as duas princip
 
 ## 📋 Resumo 
 
-Usar o Amazon Kiro ou Google Antigravity como ferramenta de produtividade para profissionais não-técnicos (Ex.: Jurídico, RH, Compliance, Comercial) criarem documentos, relatórios e análises de forma assistida por IA, substituindo Custom GPTs com uma solução mais poderosa e contextualizada.
+Usar o Amazon Kiro ou Google Antigravity como ferramenta de produtividade para profissionais não-técnicos (Ex.: Gestores, Jurídico, RH, Compliance, Comercial) criarem documentos, relatórios e análises de forma assistida por IA, substituindo Custom GPTs com uma solução mais poderosa e contextualizada.
 
 ---
 
 ## 🎯 Problema
 
-Colaboradores de áreas não-técnicas gastam tempo significativo em tarefas repetitivas de criação de documentos:
+Todos lidam com muitos documentos no dia a dia. Por exemplo:
+- **Gestores:** Relatórios, apresentações, análises de documentos
 - **Jurídico:** Contratos, pareceres, análises de documentos
 - **RH:** Políticas, comunicados, descrições de cargo
 - **Compliance:** Relatórios de auditoria, análises de risco
 - **Comercial:** Propostas comerciais, apresentações, relatórios de vendas
+- **etc**
 
 Atualmente, muitos usam Custom GPTs do ChatGPT, mas essa solução tem limitações:
-- Não acessa arquivos locais do PC
+- Não acessam arquivos locais do PC
 - Controle de contexto limitado (com múltiplos documentos não fica claro como a IA escolhe quais documentos estão sendo usados)
-- Sem integração com processos internos
+- Sem integração com processos internos ou a API que você quiser
 - Sem controle de versão ou rastreabilidade
 
 ---
