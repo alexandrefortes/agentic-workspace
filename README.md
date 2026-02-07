@@ -11,12 +11,11 @@
 > 
 > Basta dizer:  
 > *"Configure o ambiente de conversão de documentos para mim*
+> - Ler o script de configuração em `ferramentas/setup/configurar-ambiente.ps1`
 > - Ler os [requisitos em `ferramentas/conversao-word-e-pdf/requirements.txt`](ferramentas/conversao-word-e-pdf/requirements.txt)
-> - Ler a [documentação de troubleshooting em `ferramentas/conversao-word-e-pdf/README.md#-troubleshooting`](ferramentas/conversao-word-e-pdf/README.md#-troubleshooting)
-> - Checar se Pandoc e MiKTeX estão instalados, se não, instalar
-> - Configurar o PATH do sistema
-> - Testar as conversões e tentar corrigir até conseguir
-> - Reportar se tudo funcionou" no doc/RELATORIO-CONFIGURACAO.md
+> - Checar se Pandoc e MiKTeX estão instalados
+> - Executar o script de setup ou configurar manualmente o PATH
+> - Testar as conversões" no doc/RELATORIO-CONFIGURACAO.md
 
 ---
 

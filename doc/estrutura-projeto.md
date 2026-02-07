@@ -26,6 +26,8 @@ agentic-workspace/
 │
 ├── ferramentas/                       # Ferramentas de automação
 │   ├── README.md                     # Índice de ferramentas disponíveis
+│   ├── setup/                        # Scripts de configuração
+│   │   └── configurar-ambiente.ps1
 │   └── conversao-word-e-pdf/         # Scripts de conversão
 │       ├── md_para_word.py           # Converte Markdown → Word
 │       ├── md_para_pdf.py            # Converte Markdown → PDF
@@ -77,6 +79,12 @@ Pasta principal para ferramentas de automação do projeto.
 - `requirements.txt`: Lista de dependências Python necessárias
 - `README.md`: Documentação completa dos scripts
 - `logs/`: Logs de auditoria de conversões
+
+### `/ferramentas/setup`
+Scripts de configuração do ambiente.
+
+**Arquivos:**
+- `configurar-ambiente.ps1`: Script PowerShell para configurar Pandoc e MiKTeX automaticamente.
 
 **Uso típico:**
 ```bash
