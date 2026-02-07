@@ -2,7 +2,7 @@
 
 # Agentic Workspace 
 
-> Produtividade com IA Contextual para Profissionais Não-Técnicos
+> Produtividade com IA Contextual para Qualquer Profissional, pessoa desenvolvedora de software ou não.
 
 ![Agentic IDE for Non-Devs Cover](img/cover2.png)
 
@@ -416,7 +416,7 @@ Veja a [documentação completa da estrutura](doc/estrutura-projeto.md) para ent
 - [Análise de Segurança do Kiro](../../Tecnologias/kiro.md)
 - [Comparativo de IDEs com IA](../../Tecnologias/comparativo-seguranca-ides-ia.md)
 - [Scripts de Conversão](ferramentas/conversao-word-e-pdf/)
-- [Steering Files de Exemplo](steering-files/)
+- [Steering Files de Exemplo](doc/guia-steering-files.md)
 
 ---
 

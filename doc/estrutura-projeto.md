@@ -7,9 +7,20 @@ Este documento descreve a organização completa dos arquivos para implementaç�
 ## 🗂️ Estrutura Completa
 
 ```
-agentic-ide-for-non-devs/
+agentic-workspace/
 ├── README.md                          # Documento principal da ideia
-├── estrutura-projeto.md               # Este arquivo
+├── README.md                          # Documento principal da ideia
+├── img/                               # Imagens e assets visuais
+│   ├── cover.png                     
+│   └── cover2.png
+├── doc/                               # Documentação do projeto
+│   ├── estrutura-projeto.md           # Este arquivo
+│   ├── guia-steering-files.md         # Guia de Steering Files
+│   ├── RELATORIO-CONFIGURACAO.md      # Relatório de ambiente
+│   ├── setup-antigravity.md           # Setup específico Antigravity
+│   ├── setup-kiro.md                  # Setup específico Kiro
+│   └── setup-guide-antigravity-kiro.md # Guia comparativo e setup
+│
 ├── README.docx                        # Versão Word (gerada automaticamente)
 ├── README.pdf                         # Versão PDF (gerada automaticamente)
 │
@@ -41,10 +52,13 @@ agentic-ide-for-non-devs/
 │   ├── compliance/                   # Exemplo: análise de documentos
 │   └── comercial/                    # Exemplo: proposta comercial
 │
-└── docs/                              # Documentação adicional
-    ├── instalacao.md                 # Guia de instalação
-    ├── uso-basico.md                 # Guia de uso básico
-    └── troubleshooting.md            # Solução de problemas
+└── doc/                               # Documentação adicional (Movemos tudo para cá)
+    ├── estrutura-projeto.md          # Estrutura de arquivos
+    ├── guia-steering-files.md        # Guia de Steering Files
+    ├── RELATORIO-CONFIGURACAO.md     # Relatório de ambiente
+    ├── setup-antigravity.md          # Setup Antigravity
+    ├── setup-kiro.md                 # Setup Kiro
+    └── setup-guide-antigravity-kiro.md # Guia comparativo
 ```
 
 ---
@@ -122,13 +136,16 @@ exemplos/juridico/
 
 ---
 
-### `/docs`
-Documentação adicional para instalação, uso e troubleshooting.
+### `/doc`
+Documentação do projeto e guias de configuração.
 
 **Arquivos:**
-- `instalacao.md`: Passo a passo para configurar o ambiente
-- `uso-basico.md`: Tutorial para primeiros passos
-- `troubleshooting.md`: Soluções para problemas comuns
+- `estrutura-projeto.md`: Estrutura de arquivos (este arquivo)
+- `guia-steering-files.md`: Guia completo de Steering Files
+- `RELATORIO-CONFIGURACAO.md`: Relatório de verificação de ambiente
+- `setup-antigravity.md`: Instruções específicas para Antigravity
+- `setup-kiro.md`: Instruções específicas para Kiro
+- `setup-guide-antigravity-kiro.md`: Guia comparativo de configuração
 
 ---
 
@@ -242,7 +259,7 @@ ferramentas/conversao-word-e-pdf/logs/
 
 ---
 
-## 📊 Métricas e Monitoramento
+## 📊 Métricas e Monitoramento (WIP)
 
 ### Arquivos a Monitorar
 - Número de conversões por dia/semana/mês
