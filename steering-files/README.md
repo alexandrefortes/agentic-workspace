@@ -1,16 +1,16 @@
-# 🎯 Steering Files por Área
+# 🎯 Exemplos de Steering Files por Área
 
-Arquivos de diretrizes que o Kiro lê automaticamente para aplicar padrões específicos de cada área.
+Arquivos de diretrizes que o Kiro lê automaticamente para aplicar padrões específicos.
 
 ---
 
 ## 📋 O que são Steering Files?
 
-Steering files são arquivos Markdown que contêm instruções e diretrizes para o Kiro. Eles são carregados automaticamente baseado na pasta do projeto, garantindo que documentos gerados sigam os padrões da área.
+Steering files são arquivos Markdown que contêm instruções e diretrizes para o Kiro.
 
 ---
 
-## 🗂️ Arquivos Disponíveis
+## 🗂️ Exemplos Disponíveis
 
 ### 1. `juridico.md`
 **Quando é usado:** Projetos na pasta `projetos/juridico/**`
@@ -147,22 +147,6 @@ Exemplo de estrutura de pastas
 
 ---
 
-## 🎨 Personalização
-
-### Adicionar Nova Área
-1. Criar novo arquivo: `<area>.md`
-2. Definir `fileMatchPattern` no cabeçalho
-3. Documentar diretrizes específicas
-4. Testar com projeto de exemplo
-
-### Modificar Área Existente
-1. Editar arquivo correspondente
-2. Atualizar diretrizes conforme necessário
-3. Testar mudanças com documentos existentes
-4. Comunicar mudanças ao time
-
----
-
 ## 🔍 Exemplos de Diretrizes
 
 ### Linguagem Formal (Jurídico)
@@ -236,27 +220,6 @@ Exemplo de estrutura de pastas
    ├── contrato-cliente-x.docx
    └── contrato-cliente-x.pdf
 ```
-
----
-
-## 📊 Métricas
-
-Steering files permitem rastrear:
-- Quantos documentos foram gerados por área
-- Quais diretrizes são mais usadas
-- Taxa de conformidade com padrões
-- Tempo médio de geração por tipo
-
----
-
-## 🔗 Referências
-
-- [Documentação do Kiro sobre Steering Files](https://docs.kiro.ai/steering-files)
-- [Estrutura do Projeto](../estrutura-projeto.md)
-- [Scripts de Conversão](../ferramentas/conversao-word-e-pdf/README.md)
-
----
-
 **Última atualização:** 2026-01-24  
 **Versão:** 1.0  
 **Autor:** Projeto Kiro para Não-Dev

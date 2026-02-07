@@ -91,7 +91,7 @@ inclusion: always
 
 ---
 
-## Exemplo: Nosso Steering File
+## Exemplo
 
 Veja `.kiro/steering/ideias.md` para o exemplo completo implementado.
 
@@ -310,21 +310,3 @@ Steering files são a melhor forma de instruir o Kiro sobre conversão de docume
 3. ✅ **Manutenível** - Fácil de atualizar e versionar
 4. ✅ **Escalável** - Funciona para toda a equipe
 5. ✅ **Inteligente** - Agente toma decisões corretas automaticamente
-
-O steering file `.kiro/steering/ideias.md` implementa todas essas boas práticas e está pronto para uso!
-
----
-
-**Próximos Passos:**
-
-1. ✅ Steering file criado e documentado
-2. 📝 Testar com casos de uso reais
-3. 🔄 Iterar baseado no feedback
-4. 📚 Criar steering files para outras áreas (jurídico, RH, compliance)
-
----
-
-**Referências:**
-- `.kiro/steering/ideias.md` - Steering file implementado
-- ferramentas/conversao-word-e-pdf/README.md - Documentação técnica completa
-- `RELATORIO-CONFIGURACAO.md` - Status da configuração do ambiente
