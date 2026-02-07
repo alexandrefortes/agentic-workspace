@@ -2,7 +2,7 @@
 
 # Agentic Workspace 
 
-> Produtividade com IA Contextual para Qualquer Profissional, pessoa desenvolvedora de software ou não.
+> Produtividade com IA contextual para qualquer profissional, pessoa desenvolvedora de software ou não.
 
 ![Agentic IDE for Non-Devs Cover](img/cover2.png)
 
