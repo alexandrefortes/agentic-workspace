@@ -9,6 +9,7 @@ Coleção de ferramentas de automação para o projeto.
 | Ferramenta | Descrição | Documentação |
 |------------|-----------|--------------|
 | **conversao-word-e-pdf** | Converte Markdown para Word (.docx) e PDF (.pdf) com sanitização de segurança | [README](conversao-word-e-pdf/README.md) |
+| **conversao-abnt (WIP)** | Converte Markdown para PDF nas normas ABNT. Gera PDF a partir de LaTeX | [README](conversao-abnt/README.md) |
 
 ---
 

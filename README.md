@@ -1,3 +1,5 @@
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+
 > 💡 **Dica para Iniciantes:**  
 > Não sabe como configurar o ambiente? **Peça ao próprio Kiro/Antigravity!**  
 > 
@@ -28,9 +30,9 @@ Antes de decidir qual ferramenta usar, veja a comparação entre as duas princip
 
 ---
 
-## 📋 Resumo da Ideia
+## 📋 Resumo 
 
-Usar o Amazon Kiro como ferramenta de produtividade para profissionais não-técnicos (Jurídico, RH, Compliance, Comercial) criarem documentos, relatórios e análises de forma assistida por IA, substituindo Custom GPTs com uma solução mais poderosa e contextualizada.
+Usar o Amazon Kiro ou Google Antigravity como ferramenta de produtividade para profissionais não-técnicos (Ex.: Jurídico, RH, Compliance, Comercial) criarem documentos, relatórios e análises de forma assistida por IA, substituindo Custom GPTs com uma solução mais poderosa e contextualizada.
 
 ---
 
@@ -43,19 +45,24 @@ Colaboradores de áreas não-técnicas gastam tempo significativo em tarefas rep
 - **Comercial:** Propostas comerciais, apresentações, relatórios de vendas
 
 Atualmente, muitos usam Custom GPTs do ChatGPT, mas essa solução tem limitações:
-- Não acessa arquivos locais da empresa
-- Contexto limitado (não consegue ler múltiplos documentos simultaneamente)
+- Não acessa arquivos locais do PC
+- Controle de contexto limitado (com múltiplos documentos não fica claro como a IA escolhe quais documentos estão sendo usados)
 - Sem integração com processos internos
 - Sem controle de versão ou rastreabilidade
-- Risco de vazamento de dados sensíveis
 
 ---
 
 ## 💡 Solução Proposta
 
-Usar o **Amazon Kiro** como assistente de produtividade para profissionais não-dev, aproveitando suas capacidades avançadas:
+Usar o **Amazon Kiro** ou **Google Antigravity** como assistentes de produtividade para quaquer atividade, não apenas desenvolvimento de software, aproveitando suas capacidades avançadas:
 
-### Como Funciona
+- **Contexto Dinâmico (Steering Files ou skills):** Definir regras de negócio, tom de voz e formatos específicos por projeto (ex: "sempre use linguagem formal em contratos").
+- **Conexão com Dados Reais:** Conectar o agente a bancos de dados, APIs (ex: NotebookLM, Notion, Google Sheets, emails).
+- **Planejamento Estruturado:** O agente cria planos de implementação (Antigravity) ou segue especificações rígidas (Kiro) para garantir qualidade antes de executar.
+- **Leitura Inteligente de Múltiplos Arquivos:** O agente consegue analisar pastas inteiras com PDFs, planilhas, imagens e documentos simultaneamente.
+- **Criação de Código/Ferramentas Sob Demanda:** Descrever o problema em linguagem natural e o agente gera código/ferramentas para uso pontual ou recorrente (ex: cruzar planilhas, renomear arquivos em lote, extrair dados de PDFs). Se você já tem ferramentas locais do seu PC (como os scripts de conversão deste projeto), o agente aprende a usar.
+
+### Exemplos de Como Funciona
 
 ```
 📁 Pasta de Entrada (Insumos)
@@ -66,7 +73,7 @@ Usar o **Amazon Kiro** como assistente de produtividade para profissionais não-
 
          ↓ (Kiro processa)
 
-🤖 Amazon Kiro + Steering Files
+🤖 Amazon Kiro + Steering Files ou Google Antigravity + Skills
    ├── Lê todos os arquivos (PDF, Word, Excel, imagens)
    ├── Aplica diretrizes de contexto dinâmicas
    ├── Gera documentos seguindo padrões da empresa
@@ -82,19 +89,17 @@ Usar o **Amazon Kiro** como assistente de produtividade para profissionais não-
 
 ### Vantagens sobre Custom GPTs
 
-| Aspecto | Custom GPT | Amazon Kiro |
+| Aspecto | Custom GPT | IDE Agentica |
 |---------|-----------|-------------|
-| **Acesso a arquivos locais** | ❌ Não (precisa copiar/colar) | ✅ Sim (lê pastas inteiras) |
-| **Múltiplos formatos** | ⚠️ Limitado (texto, imagens) | ✅ PDF, Word, Excel, imagens, código |
-| **Contexto dinâmico** | ❌ Fixo por GPT | ✅ Steering Files por projeto |
-| **Integração com processos** | ❌ Não | ✅ Sim (pode executar scripts, validações) |
-| **Segurança de dados** | ⚠️ Dados vão para OpenAI | ✅ Ambiente isolado (VM/Container) |
+| **Acesso a arquivos locais** | ❌ Limitado (precisa copiar/colar) | ✅ Sim (lê pastas inteiras) |
+| **Contexto dinâmico** | ❌ Fixo por GPT / Pouco controle | ✅ Steering Files por projeto |
+| **Integração com processos** | ❌ Limitado | ✅ Sim (pode executar scripts, validações) |
 | **Rastreabilidade** | ❌ Não | ✅ Git, versionamento automático |
 | **Custo** | 💰 $20/usuário/mês | 💰 Licença única + VM |
 
 ---
 
-## 🔧 Casos de Uso Práticos
+## 🔧 Exemplos de Casos de Uso Práticos
 
 ### 1. Time Jurídico: Criação de Contratos
 
@@ -319,12 +324,11 @@ Veja a [documentação completa da estrutura](estrutura-projeto.md) para entende
 
 ---
 
-## 🛡️ Segurança e Governança
+## 🛡️ Segurança e Governança Recomendada se for usar em ambiente corporativo
 
 ### Ambiente Isolado Recomendado
-- Kiro roda em **VM descartável** ou **Container Docker**
+- Kiro em **VM descartável** ou **Container Docker**
 - Dados sensíveis **nunca** saem do ambiente corporativo
-- Acesso via VPN/rede interna apenas
 
 ### Controles de Acesso
 - Cada área tem sua própria VM/projeto
@@ -338,12 +342,12 @@ Veja a [documentação completa da estrutura](estrutura-projeto.md) para entende
 
 ---
 
-## 📊 Benefícios Esperados
+## 📊 Benefícios Esperados (WIP)
 
-### Quantitativos
-- **Redução de 50-70%** no tempo de criação de documentos padrão
-- **Aumento de 30%** na produtividade de tarefas repetitivas
-- **ROI em 6 meses** (considerando custo de licença + VM vs. horas economizadas)
+### Quantitativos (WIP)
+- **Redução de ?%** no tempo de criação de documentos padrão
+- **Aumento de ?%** na produtividade de tarefas repetitivas
+- **ROI em ? meses** (considerando custo de licença + VM vs. horas economizadas)
 
 ### Qualitativos
 - Maior consistência nos documentos (seguem sempre os padrões)
@@ -353,7 +357,7 @@ Veja a [documentação completa da estrutura](estrutura-projeto.md) para entende
 
 ---
 
-## 🚀 Plano de Implementação
+## 🚀 Plano de Implementação em Equipes (WIP)
 
 ### Fase 1: Piloto (2 meses)
 - Escolher 1 área piloto
@@ -376,19 +380,16 @@ Veja a [documentação completa da estrutura](estrutura-projeto.md) para entende
 
 ---
 
-## 💰 Estimativa de Custo
+## 💰 Estimativa de Custos (WIP)
 
-| Item | Custo Mensal | Custo Anual |
-|------|--------------|-------------|
-| Licença Kiro (10 usuários) | R$ 500 | R$ 6.000 |
-| VM isolada (AWS/Azure) | R$ 300 | R$ 3.600 |
-| Treinamento inicial | - | R$ 5.000 |
-| Suporte técnico (20h/mês) | R$ 2.000 | R$ 24.000 |
-| **Total** | **R$ 2.800** | **R$ 38.600** |
+| Item | Custo Mensal |
+|------|--------------|
+| Licença Kiro Pro (uso pessoal) | US$ 20,00 |
+| Licença Antigravity | ~R$ 100,00 |
 
-**Economia esperada:** 200 horas/mês × R$ 100/hora = R$ 20.000/mês = **R$ 240.000/ano**
+**Economia esperada:** ? horas/mês × R$ ?/hora = R$ ?/mês = **R$ ?/ano**
 
-**ROI:** 521% no primeiro ano
+**ROI:** ?% no primeiro ano
 
 ---
 
@@ -398,9 +399,9 @@ Veja a [documentação completa da estrutura](estrutura-projeto.md) para entende
 |-------|---------------|---------|-----------|
 | Resistência cultural ("IA vai me substituir") | Alta | Alto | Comunicação clara: Kiro é assistente, não substituto. Foco em tarefas repetitivas. |
 | Qualidade dos documentos gerados | Média | Alto | Sempre exigir revisão humana. Começar com casos simples. |
-| Vazamento de dados sensíveis | Baixa | Crítico | Ambiente isolado obrigatório. Auditoria de logs. |
-| Custo de manutenção maior que esperado | Média | Médio | Começar com piloto pequeno. Medir ROI antes de escalar. |
-| Dependência de fornecedor (Amazon) | Baixa | Médio | Avaliar alternativas (Cursor, Windsurf) no futuro. |
+| Vazamento de dados sensíveis | Baixa | Crítico | Se ambiente corporativo, recomendo ambiente isolado e auditoria de logs. |
+| Custo de manutenção maior que esperado | Média | Médio | Começar com piloto pequeno. Medir ROI e qualidade de treinamento antes de escalar. |
+| Dependência de fornecedor (Amazon/Google) | Baixa | Médio | Avaliar alternativas (Cursor, Windsurf) no futuro. |
 
 ---
 
@@ -413,6 +414,12 @@ Veja a [documentação completa da estrutura](estrutura-projeto.md) para entende
 
 ---
 
-**Autor:** Alexandre Santana  
-**Data:** 2026-01-24  
-**Tipo de Exploração Esperado:** Protótipo (precisa demonstração técnica com 2-3 casos de uso reais)
+## 👤 Sobre o Autor
+
+**Alexandre Fortes**  
+*Data & AI Executive @ Efí Bank*
+
+Executivo de Dados e IA com atuação "hands-on". Especialista em colocar sistemas de LLM em produção (end-to-end), desde o desenho do problema até a entrega segura em operações críticas. 
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/alexandre-f-santana/)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-black?style=for-the-badge&logo=github)](https://github.com/alexandrefortes)
