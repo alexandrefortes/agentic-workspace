@@ -1,5 +1,11 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
+# Agentic Workspace 
+
+> Produtividade com IA Contextual para Profissionais Não-Técnicos
+
+![Agentic IDE for Non-Devs Cover](cover2.png)
+
 > 💡 **Dica para Iniciantes:**  
 > Não sabe como configurar o ambiente? **Peça ao próprio Kiro/Antigravity!**  
 > 
