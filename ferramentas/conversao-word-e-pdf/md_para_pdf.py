@@ -45,6 +45,8 @@ def sanitizar_markdown(conteudo):
         r'<script[^>]*/>',
         r'<object[^>]*/>',
         r'<embed[^>]*/>',
+        # Remove SVG badges (fix for missing rsvg-convert)
+        r'!\[[^\]]*\]\([^)]*(?:\.svg|shields\.io|badge)[^)]*\)',
     ]
     
     conteudo_limpo = conteudo
@@ -121,10 +123,19 @@ def converter_para_pdf(arquivo_md, arquivo_saida=None):
         arquivo_temp = arquivo_md.with_suffix('.temp.md')
         with open(arquivo_temp, 'w', encoding='utf-8') as f:
             f.write(conteudo_limpo)
+            
+        # Criar arquivo de header LaTeX temporário para quebra de linha em código
+        header_content = r'''
+\usepackage{fvextra}
+\fvset{breaklines}
+        '''
+        header_temp = arquivo_md.with_suffix('.header.tex')
+        with open(header_temp, 'w', encoding='utf-8') as f:
+            f.write(header_content)
         
     except Exception as e:
-        print(f"❌ Erro ao ler arquivo: {e}")
-        registrar_log(arquivo_md, arquivo_saida, "ERRO", f"Erro ao ler: {e}")
+        print(f"❌ Erro ao ler/criar arquivos: {e}")
+        registrar_log(arquivo_md, arquivo_saida, "ERRO", f"Erro IO: {e}")
         return False
     
     # Construir comando Pandoc
@@ -134,6 +145,7 @@ def converter_para_pdf(arquivo_md, arquivo_saida=None):
         '-o', str(arquivo_saida),
         '--pdf-engine=xelatex',
         '--standalone',
+        '-H', str(header_temp),
         '-V', 'geometry:margin=2.5cm',
         '-V', 'fontsize=11pt',
         '-V', 'papersize=a4',
@@ -152,8 +164,9 @@ def converter_para_pdf(arquivo_md, arquivo_saida=None):
             check=True
         )
         
-        # Limpar arquivo temporário
+        # Limpar arquivos temporários
         arquivo_temp.unlink()
+        header_temp.unlink()
         
         print(f"✅ Conversão concluída com sucesso!")
         print(f"📊 Tamanho: {arquivo_saida.stat().st_size / 1024:.1f} KB")
@@ -173,6 +186,8 @@ def converter_para_pdf(arquivo_md, arquivo_saida=None):
         # Limpar arquivo temporário
         if arquivo_temp.exists():
             arquivo_temp.unlink()
+        if header_temp.exists():
+            header_temp.unlink()
         
         registrar_log(arquivo_md, arquivo_saida, "ERRO", f"Pandoc: {e.stderr[:100]}")
         return False
@@ -184,6 +199,8 @@ def converter_para_pdf(arquivo_md, arquivo_saida=None):
         # Limpar arquivo temporário
         if arquivo_temp.exists():
             arquivo_temp.unlink()
+        if header_temp.exists():
+            header_temp.unlink()
         
         registrar_log(arquivo_md, arquivo_saida, "ERRO", "Pandoc não instalado")
         return False
